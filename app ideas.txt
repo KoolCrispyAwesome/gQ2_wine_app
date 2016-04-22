@@ -1,0 +1,16 @@
+Currated wine recommendations based on meals and courses 
+  - save meal/wine pairings with ratings
+  - favorite wine list
+
+Resources:
+  users
+  meals
+  wines
+
+Google Maps/Yelp to buy
+
+0. Choose course #
+1. Choose protein
+2. Choose sides
+3. Choose desert (if any)
+4. Wine taste prefences
