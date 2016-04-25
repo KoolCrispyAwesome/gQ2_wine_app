@@ -35,7 +35,13 @@ module.exports = (passport) => {
     callbackURL: 'http://localhost:3000/auth/facebook/callback',
     profileFields: ['id', 'name', 'emails']
   }, (accessToken, refreshToken, profile, done) => {
-    
+    knex('users').where('facebook_id', id).first().then(user => {
+      if(user){
+        return done(null, user);
+      } else {
+        
+      }
+    });
   }));
 
   passport.serializeUser((user, done) => {
