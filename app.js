@@ -1,3 +1,4 @@
+require('dotenv').load();
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -13,10 +14,13 @@ app.use(morgan('tiny'));
 app.use(methodOverride('_method'));
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(cookieSession({
-
+  secret: process.env.SECRET
 }));
 app.use(passport.initialize());
+app.use(passport.session());
 app.use(flash());
+
+require('./helpers/passport')(passport);
 
 app.use('/auth', routes.auth);
 app.use('/users', routes.users);
