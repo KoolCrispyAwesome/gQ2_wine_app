@@ -12,7 +12,7 @@ module.exports = (passport) => {
     passwordField: 'user[password]',
     passReqToCallback: true
   }, (req, username, password, done) => {
-    knex('users').where('username', username).first().then(user => {
+    knex('users').where('email', username).first().then(user => {
       if(user){
         bcrypt.compare(password, user.password, (err, isMatched) => {
           if(isMatched){
