@@ -8,8 +8,8 @@ const FacebookStrategy = require('passport-facebook').Strategy;
 module.exports = (passport) => {
 
   passport.use(new LocalStrategy({
-    usernameField: user[email],
-    passwordField: user[password],
+    usernameField: 'user[email]',
+    passwordField: 'user[password]',
     passReqToCallback: true
   }, (req, username, password, done) => {
     knex('users').where('username', username).first().then(user => {
@@ -35,11 +35,20 @@ module.exports = (passport) => {
     callbackURL: 'http://localhost:3000/auth/facebook/callback',
     profileFields: ['id', 'name', 'emails']
   }, (accessToken, refreshToken, profile, done) => {
-    knex('users').where('facebook_id', id).first().then(user => {
+    knex('users').where('facebook_id', profile._json.id).first().then(user => {
       if(user){
         return done(null, user);
       } else {
-        
+        let newUser = {
+          facebook_id: profile._json.id,
+          first_name: profile._json.first_name,
+          last_name: profile._json.last_name,
+          email: profile._json.email
+        }
+
+        knex('users').insert(newUser, '*').then(user => {
+          return done(null, user[0]);
+        });
       }
     });
   }));
