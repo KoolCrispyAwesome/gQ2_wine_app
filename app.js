@@ -18,6 +18,9 @@ app.use(cookieSession({
 app.use(passport.initialize());
 app.use(flash());
 
+app.use('/auth', routes.auth);
+app.use('/users', routes.users);
+
 app.get('*', (req, res) => res.render('404'));
 
 app.listen(3000, () => console.log('Server listening on port 3000'));
