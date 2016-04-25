@@ -14,15 +14,19 @@ module.exports = (passport) => {
   }, (req, username, password, done) => {
     knex('users').where('email', username).first().then(user => {
       if(user){
+        if(!user.password){
+          return done(null, false, req.flash('error', 'email already used to create an account using facebook'));
+        }
+
         bcrypt.compare(password, user.password, (err, isMatched) => {
           if(isMatched){
             return done(null, user);
           } else {
-            return done(null, false, {error: 'Invalid username or password'});
+            return done(null, false, req.flash('error', 'Invalid username or password'));
           }
         });
       } else {
-        return done(null, false, {error: 'Invalid username or password'});
+        return done(null, false, req.flash('error', 'Invalid username or password'));
       }
     }).catch(err => {
       console.log('ERROR!! ', err);
