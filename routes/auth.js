@@ -3,24 +3,37 @@
 const express = require('express');
 const router = express.Router();
 const passport = require('passport');
+const bcrypt = require('bcrypt');
+const SALT_WORK_FACTOR = 10;
 
 router.get('/login', (req, res) => {
   res.render('auth/login', {error: req.flash('error')});
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/users',
   failureRedirect: '/auth/login',
   successFlash: true,
   failureFlash: true
 }));
+
+router.post('/signup', (req, res) => {
+  bcrypt.hash(req.body.user.password, SALT_WORK_FACTOR, (err, hash) => {
+    let newUser = req.body.user;
+    newUser.password = hash;
+
+    knex('users').insert(newUser, '*').then(user => {
+      res.redirect('/users');
+    });
+  });
+});
 
 router.get('/facebook', passport.authenticate('facebook', {scope: ['email']}));
 
 router.get('/facebook/callback', passport.authenticate('facebook', {
   failureRedirect: '/auth/login'
 }), (req, res) => {
-  res.redireect('/');
+  res.redirect('/users');
 });
 
 router.get('/logout', (req, res) => {
