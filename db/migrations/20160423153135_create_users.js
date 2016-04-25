@@ -4,6 +4,7 @@ exports.up = function(knex, Promise) {
     t.text('email').unique().notNullable();
     t.text('name');
     t.text('password');
+    t.text('facebook_id');
   });
 };
 
