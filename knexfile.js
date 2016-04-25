@@ -7,11 +7,20 @@ module.exports = {
     connection: {
       database: 'wine_app'
     },
-    migrations: {
-      directory: './db/migrations'
+    pool: {
+      min: 1,
+      max: 2
+    }
+  },
+
+  test: {
+    client: 'pg',
+    connection: {
+      database: 'wine_app_test'
     },
-    seeds: {
-      directory: './db/seeds'
+    pool: {
+      min: 1,
+      max: 2
     }
   },
 
