@@ -20,7 +20,7 @@ router.get('/facebook', passport.authenticate('facebook', {scope: ['email']}));
 router.get('/facebook/callback', passport.authenticate('facebook', {
   failureRedirect: '/auth/login'
 }), (req, res) => {
-  res.redireect('/');
+  res.redirect('/');
 });
 
 router.get('/logout', (req, res) => {
