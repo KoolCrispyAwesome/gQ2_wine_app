@@ -7,9 +7,11 @@ module.exports = {
     connection: {
       database: 'wine_app'
     },
-    pool: {
-      min: 1,
-      max: 2
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds'
     }
   },
 
@@ -18,9 +20,11 @@ module.exports = {
     connection: {
       database: 'wine_app_test'
     },
-    pool: {
-      min: 1,
-      max: 2
+    migrations: {
+      directory: './db/migrations'
+    },
+    seeds: {
+      directory: './db/seeds'
     }
   },
 
