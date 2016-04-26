@@ -1,4 +1,10 @@
 extends ../layout.jade
 
 block content
-  
+  h3 User Preferences
+  form(action="/users/#{user.id}?_method=PUT" method="POST")
+    input(type='email' name='user[email]' placeholder='email')
+    input(type='text' name='user[first_name]' placeholder='first name')
+    input(type='text' name='user[last_name]' placeholder='last name')
+    input(type='password' name='user[password]' placeholder='password')
+    input(type='submit' value='save changes')
