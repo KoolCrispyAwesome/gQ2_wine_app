@@ -4,15 +4,17 @@ block css
   link(rel="stylesheet", href="/stylesheets/home.css")
 
 block content
+  .welcome-image
   .welcome
-    .nav-logo
+    
+    .nav
       img(src="#", alt="app logo")
-    .nav-links
+
       if(currentUser)
         .user
           a(href="/users/#{currentUser.id}") #{currentUser.first_name} #{currentUser.last_name}
       else
-        .login
+        .user
           a(href="/auth/login") Log in or Sign up
 
     .welcome-text
