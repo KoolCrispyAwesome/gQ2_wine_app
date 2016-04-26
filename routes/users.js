@@ -12,14 +12,14 @@ router.get('/', (req, res) => {
 
 // show
 router.get('/:id', (req, res) => {
-  knex('users').where('id, req.params.id').first().then(user => {
+  knex('users').where('id', req.params.id).first().then(user => {
     res.render('users/show', {user});
   });
 });
 
 // edit
 router.get('/:id/edit', (req, res) => {
-  knex('user').where('id', req.params.id).first().then(user => {
+  knex('users').where('id', req.params.id).first().then(user => {
     if(!user.password) {
       user.noPass = true;
     }
