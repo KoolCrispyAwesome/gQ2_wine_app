@@ -4,7 +4,6 @@ const request = require('supertest');
 const expect = require('chai').expect;
 const app = require('../app').app;
 const knex = require('../db/knex');
-// const jade = require('jade');
 
 beforeEach('populate database with dummy content', done => {
 return Promise.all([
@@ -16,30 +15,15 @@ return Promise.all([
 
 afterEach('clean up database after tests', done => knex('users').del().then(() => done()));
 
-xdescribe('GET /users', () => {
-  it('renders the index page', done => {
+describe('GET /users', () => {
+  it('responds with JSON', done => {
     request(app)
-    .get('/users')
-    .expect(200)
-    .end((err, res) => {
-      expect(res.redirect).to.equal(false)
-      // OTHER OPTIONS?
-      //1.
-      // routes.index({}, {
-      //   render: viewName => {
-      //     viewName.to.equal('index');
-      //   }
-      // })
-      // 2.
-      // var html = jade.renderFile('./views/users/index.jade');
-      // res.text.to.contain(html);
-      // 3.
-      // res.text.to.contain('index') 
-      // 4.  
-      // expect(res.render(viewName)).to.equal('index')
-      done();
-    });
+      .get('/users')
+      .expect('Content-Type', /json/)
+      .expect(200, done);
   });
+
+  it('returns an array with all users')
 });
 
 xdescribe('GET users/:id', () => {
