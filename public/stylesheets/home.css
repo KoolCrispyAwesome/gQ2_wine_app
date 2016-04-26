@@ -1,0 +1,15 @@
+.nav-container {
+  background-color: lightgrey;
+  height: 50px;
+}
+
+.nav-logo {
+  position: relative;
+  float: left;
+}
+
+.nav-links {
+  position: relative;
+  float: right;
+}
+

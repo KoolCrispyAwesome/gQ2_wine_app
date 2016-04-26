@@ -1,0 +1,16 @@
+extends ./layout.jade
+
+block css
+  link(rel="stylesheet", href="/stylesheets/home.css")
+
+block content
+  .nav-container
+    .nav-logo
+      img(src="#", alt="app logo")
+    .nav-links
+      if(currentUser)
+        .user
+          a(href="/users/#{currentUser.id}") #{currentUser.first_name} #{currentUser.last_name}
+      else
+        .login
+          a(href="/auth/login") Log in or Sign up
