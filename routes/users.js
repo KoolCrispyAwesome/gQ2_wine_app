@@ -6,14 +6,34 @@ const SALT_WORK_FACTOR = 10;
 // index
 router.get('/', (req, res) => {
   knex('users').select().then(users => {
-    res.render('users/index', {users});
+    res.format({
+      default(){
+        res.status(406).send('Not Acceptable');
+      },
+      html(){
+        res.render('users/index',{users});
+      },
+      json(){
+        res.send(users);
+      }
+    });
   });
 });
 
 // show
 router.get('/:id', (req, res) => {
   knex('users').where('id, req.params.id').first().then(user => {
-    res.render('users/show', {user});
+    res.format({
+      default(){
+        res.status(406).send('Not Acceptable');
+      },
+      html(){
+        res.render('users/show',{user});
+      },
+      json(){
+        res.send(user);
+      }
+    });
   });
 });
 
@@ -23,7 +43,18 @@ router.get('/:id/edit', (req, res) => {
     if(!user.password) {
       user.noPass = true;
     }
-    res.render('users/edit', {user});
+    
+    res.format({
+      default(){
+        res.status(406).send('Not Acceptable');
+      },
+      html(){
+        res.render('users/edit',{user});
+      },
+      json(){
+        res.send(user);
+      }
+    });
   });
 });
 
