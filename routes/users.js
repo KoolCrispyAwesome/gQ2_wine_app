@@ -68,22 +68,37 @@ router.put('/:id', (req, res) => {
     if(req.body.user.password !== user.password) {
       bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
         bcrypt.hash(req.body.user.password, salt, (err, hash) => {
-          knex('users').where('id', req.params.id).first().update({password: hash}).then(() => {
-            res.redirect('/users');
-          });
+          knex('users').where('id', req.params.id).first().update({password: hash})});
         });
-      });
     }
-    if(req.body.user.first_name !== user.first_name || req.body.user.last_name !== user.last_name || req.body.user.email !== user.email) {
-      knex('users').where('id', req.params.id).first().update({first_name: req.body.user.first_name, last_name: req.body.user.last_name, email: req.body.user.email});
+    if(req.body.user.first_name !== user.first_name) {
+      knex('users').where('id', req.params.id).first().update({first_name: req.body.user.first_name});
     }
+    if(req.body.user.last_name !== user.last_name) {
+      knex('users').where('id', req.params.id).first().update({last_name: req.body.user.last_name});
+    }
+    if(req.body.user.email !== user.email) {
+     knex('users').where('id', req.params.id).first().update({email: req.body.user.email});
+    }
+    res.redirect('/users');
   });
 });
 
 // delete
 router.delete('/:id', (req, res) => {
   knex('users').where('id', req.params.id).first().del().then(user => {
-    res.redirect('/users');
+    console.log('USER:', user)
+    res.format({
+      default(){
+        res.status(406).send('Not Acceptable');
+      },
+      html(){
+        res.redirect('/users');
+      },
+      json(){
+        res.send(user);
+      }
+    });
   });
 });
 

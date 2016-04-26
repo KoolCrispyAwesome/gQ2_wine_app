@@ -96,46 +96,57 @@ describe('GET /users/:id', () => {
   });
 });
 
-describe('PUT /users/:id', () => {
-  var updatedUser = {
-    user: {
-      id: 1,
-      email: 'firstupdated@example.com',
-      first_name: 'firstupdated',
-      last_name: 'firstlastupdated'
-    }
-  }
+// xdescribe('PUT /users/:id', () => {
+//   var updatedUser = {
+//     user: {
+//       id: 1,
+//       email: 'firstupdated@example.com',
+//       first_name: 'firstupdated',
+//       last_name: 'firstlastupdated'
+//     }
+//   }
 
-  it('responds with JSON', done => {
-    request(app)
-      .put('/users/1')
-      .type('form')
-      .send(updatedUser)
-      .expect('Content-Type', /json/)
-      .expect(200, done);
-  });
-});
+//   it('responds with JSON', done => {
+//     request(app)
+//       .put('/users/1')
+//       .type('form')
+//       .send(updatedUser)
+//       .expect('Content-Type', /json/)
+//       .expect(200, done);
+//   });
+// });
 
-xdescribe('DELETE /users/:id', () => {
-  it('responds with JSON', done => {
-    request(app) 
-      .delete('/users/1')
-      .set('Accept', 'application/json')
-      .expect('Content-Type', /json/)
-      .expect(200, done);
-  })
+// xdescribe('DELETE /users/:id', () => {
+//   it('responds with JSON', done => {
+//     request(app) 
+//       .delete('/users/1')
+//       .set('Accept', 'application/json')
+//       .expect('Content-Type', /json/)
+//       .expect(200, done);
+//   })
 
-  it('removes the user with an id of 1', done => {
-    request(app)
-      .delete('/users/1')
-      .end((err, res) => {
-        knex('users').where('id', 1).then(user => {
-          expect(users).to.be.empty;
-          done();
-        })
-      })
-  })
-})
+//   it('removes the user with an id of 1', done => {
+//     request(app)
+//       .delete('/users/1')
+//       .end((err, res) => {
+//         knex('users').where('id', 1).then(user => {
+//           expect(user).to.be.empty;
+//           done();
+//         })
+//       })
+//   })
+
+//   it('returns the deleted user', done => {
+//     request(app)
+//       .delete('/user/1')
+//       .end((err, res) => {
+//         expect(res.body[0].email).to.equal('first@example.com');
+//         expect(res.body[0].first_name).to.equal('first');
+//         expect(res.body[0].last_name).to.equal('firstlast');
+//         done();
+//       })
+//   });
+// });
 
 
 
