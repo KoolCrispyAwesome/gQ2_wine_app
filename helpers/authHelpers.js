@@ -1,5 +1,3 @@
-const bcrypt = require('bcrypt');
-
 module.exports = {
 
   currentUser(req, res, next){
