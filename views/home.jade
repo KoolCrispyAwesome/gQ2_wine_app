@@ -4,7 +4,7 @@ block css
   link(rel="stylesheet", href="/stylesheets/home.css")
 
 block content
-  .nav-container
+  .welcome
     .nav-logo
       img(src="#", alt="app logo")
     .nav-links
@@ -14,3 +14,26 @@ block content
       else
         .login
           a(href="/auth/login") Log in or Sign up
+
+    .welcome-text
+      h3 Wine App
+      a(href="/matches"): button Find a match
+
+  .team-picks
+    .picks
+    .picks
+    .picks
+
+  .technologies
+    .technologies-text
+      strong technologies 
+      | node, express, postgresql, jade, css, javascript, knex, jquery
+
+  .team
+    .members
+    .members
+    .members
+
+block scripts
+  script(src="http://code.jquery.com/jquery-2.2.1.min.js")
+  script(src="/javascript/home.js")
