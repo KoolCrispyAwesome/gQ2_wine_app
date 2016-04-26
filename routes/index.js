@@ -1,6 +1,6 @@
 const auth = require('./auth');
 const users = require('./users');
-const matches = requrie('./matches');
+const matches = require('./matches');
 
 module.exports = {
   auth,

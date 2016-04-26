@@ -63,6 +63,9 @@ module.exports = (passport) => {
 
   passport.deserializeUser((id, done) => {
     knex('users').where('id', id).first().then(user => {
+      delete user.email;
+      delete user.password;
+      delete user.facebook_id;
       done(null, user);
     }).catch(err => {
       done(err);
