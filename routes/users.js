@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const knex = require('../db/knex');
 const SALT_WORK_FACTOR = 10;
+const bcrypt = require('bcrypt');
 
 // index
 router.get('/', (req, res) => {
@@ -22,7 +23,7 @@ router.get('/', (req, res) => {
 
 // show
 router.get('/:id', (req, res) => {
-  knex('users').where('id, req.params.id').first().then(user => {
+  knex('users').where('id', req.params.id).first().then(user => {
     res.format({
       default(){
         res.status(406).send('Not Acceptable');
@@ -31,10 +32,14 @@ router.get('/:id', (req, res) => {
         res.render('users/show',{user});
       },
       json(){
-        res.send(user);
+        if(user) {
+          res.send(user);
+        } else {
+          res.status(404).send();
+        }
       }
     });
-  });
+  })
 });
 
 // edit
@@ -43,7 +48,6 @@ router.get('/:id/edit', (req, res) => {
     if(!user.password) {
       user.noPass = true;
     }
-    
     res.format({
       default(){
         res.status(406).send('Not Acceptable');
