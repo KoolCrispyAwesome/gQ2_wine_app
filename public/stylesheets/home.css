@@ -1,6 +1,5 @@
-.nav-container {
-  background-color: lightgrey;
-  height: 50px;
+body {
+  margin: 0;
 }
 
 .nav-logo {
@@ -13,3 +12,36 @@
   float: right;
 }
 
+.welcome {
+  text-align: center;
+  background-image: url('https://files.slack.com/files-pri/T027GBYPB-F13V7CAAJ/wine-food.jpg');
+  background-size: cover;
+  height: 700px;
+}
+
+.welcome-text {
+  display: inline-block;
+  height: 100%;
+}
+
+.team-picks, .team {
+  background-color: lightgrey;
+  text-align: center;
+  padding: 50px 0;
+}
+
+.picks, .members {
+  border: 1px solid black;
+  display: inline-block;
+  width: 200px;
+  height: 200px;
+}
+
+.picks:nth-child(even), .members:nth-child(even) {
+  margin: 0 100px;
+}
+
+.technologies {
+  text-align: center;
+  padding: 50px 0;
+}
