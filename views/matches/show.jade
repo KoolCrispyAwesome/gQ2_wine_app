@@ -11,9 +11,14 @@ block content
     li
       a(href="/home") LOGO
     li(style="float:right") 
-      a(href="/users/#{currentUser.id}") #{currentUser.first_name}
-    li(style="float:right")
-      a(href="/users/#{currentUser.id}") Favorites
+      if(currentUser)
+        .user
+          a(href="/users/#{currentUser.id}") #{currentUser.first_name} #{currentUser.last_name}
+      else
+        .user
+          a(href="/auth/login") Log in or Sign up
+    //- li(style="float:right")
+    //-   a(href="/users/#{currentUser.id}") Favorites
   
   div.match-wrapper
     p.section-headline The Perfect Combi
