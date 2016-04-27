@@ -1,112 +1,125 @@
 extends ../layout.jade
 
-block content
+block css
+  link(rel="stylesheet", href="/stylesheets/index.css")
 
-  div(class="veggies")
-    div
+block content
+  div(class="dropdown")
+    div(class="veggies")
       h3 Veggies
       img(src="https://cdn2.iconfinder.com/data/icons/restaurant-1/100/vegan_food_meal_dinner_lunch_restaurant_vegetables-128.png")
-    p Asparagus
+    .dropdown-content-veggies
+      p Asparagus
       img(src="https://cdn0.iconfinder.com/data/icons/veggie/64/asparagus-128.png")
-    p Squash
+      p Squash
       img(src="http://vignette3.wikia.nocookie.net/herebemonsters/images/2/23/Squash.png/revision/latest?cb=20121215122527")
-    p Chilli Peppers
+      p Chilli Peppers
       img(src="https://cdn3.iconfinder.com/data/icons/cosmo-color-vegetables/40/pepper_chili-128.png")
-    p Mushrooms
+      p Mushrooms
       img(src="https://cdn3.iconfinder.com/data/icons/autumn-1/512/mushrooms-128.png")
-    p Tomatoes
+      p Tomatoes
       img(src="https://cdn3.iconfinder.com/data/icons/food-volume-8/48/377-128.png")
-    p Onions
+      p Onions
       img(src="https://cdn4.iconfinder.com/data/icons/vegetables-i/90/03-128.png")
-    p Broccoli
+      p Broccoli
       img(src="https://cdn0.iconfinder.com/data/icons/food-18/140/food_c_07-128.png")
-    p Grilled Peppers
+      p Grilled Peppers
       img(src="https://cdn4.iconfinder.com/data/icons/vegetables-i/99/09-128.png")
 
-  div(class="cheese")
-    h3 Cheese
+  div(class="dropdown")
+    div(class="cheese")
+      h3 Cheese
       img(src="https://cdn0.iconfinder.com/data/icons/kitchen-colored-1/60/cheese-food-milk-dairy-128.png")
-    p Feta
+    .dropdown-content-cheese
+      p Feta
       img(src="https://www.songjog.com/bazar/image/cache/data/German_Butcher_Feta_Cheese____250_gm-215x215.jpg")
-    p Asiago
+      p Asiago
       img(src="http://www.belecasel.com/wp-content/uploads/2013/07/real-asiago-cheese.jpg")
-    p Havarti
+      p Havarti
       img(src="http://www.foodsubs.com/Photos/tilsit.jpg")
-    p Gouda
+      p Gouda
       img(src="https://kunstkitchen.files.wordpress.com/2011/09/cheese_gouda.jpg")
-    p Goat Cheese
+      p Goat Cheese
       img(src="http://www.pluswine.com/wp-content/uploads/2015/03/goat_cheese.png")
-    p Cheddar
+      p Cheddar
       img(src="http://www.foodsubs.com/Photos/cheddar.jpg")
-    p Parmesan
+      p Parmesan
       img(src="http://static.savvymom.ca/uploads/parmcheese_blog.jpg")
-    p Romano
+      p Romano
       img(src="http://files.recipetips.com/images/glossary/c/cheese_romano.jpg")
-    p Gorganzola
+      p Gorganzola
       img(src="http://good-cooking.co.uk/wp-content/uploads/2013/01/gorgonzola.jpg")
-    p Aged Cheese
+      p Aged Cheese
       img(src="http://www.cheese.com/media/img/cheese/Beemster_Extra_Aged.png")
 
-  div(class="Meat")
-    h3 Meat
+  div(class="dropdown")
+    div(class="meat")
+      h3 Meat
       img(src="https://cdn4.iconfinder.com/data/icons/kitchen-10/512/Meat_Cleaver-128.png")
-    p Chicken
+    .dropdown-content-meat
+      p Chicken
       img(src="https://cdn0.iconfinder.com/data/icons/foody-icons/32/FoodyIcons_color-02-128.png")
-    p Turkey
+      p Turkey
       img(src="https://cdn3.iconfinder.com/data/icons/food-volume-1-1/48/07-128.png")
-    p Veal
+      p Veal
       img(src="https://cdn1.iconfinder.com/data/icons/foody-icons/32/FoodyIcons_color_02-10-128.png")
-    p Duck
+      p Duck
       img(src="https://cdn0.iconfinder.com/data/icons/types-of-poultry/32/duck-128.png")
-    p Lamb
+      p Lamb
       img(src="https://cdn3.iconfinder.com/data/icons/colorix-easter-holidays/128/easter_religion_holidays-18-128.png")
-    p Filet Mignon
+      p Filet Mignon
       img(src="https://cdn4.iconfinder.com/data/icons/foods-and-meals/512/Food_Meals_grilled_beef_steak-128.png")
-    p Pepperoni
+      p Pepperoni
       img(src="https://cdn1.iconfinder.com/data/icons/food-flat-3/48/105-128.png")
-    p Spicy Sausage
+      p Spicy Sausage
       img(src="https://cdn0.iconfinder.com/data/icons/food-icons-4/110/Sausage-128.png")
-    p Steak
+      p Steak
       img(src="https://cdn2.iconfinder.com/data/icons/food-icons-6/200/food_steak-128.png")
-    p Ribeye
+      p Ribeye
       img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Steak-128.png")
-    p Beef
+      p Beef
       img(src="https://cdn0.iconfinder.com/data/icons/food-interactive-2/128/79-128.png")
-    p Pork
+      p Pork
       img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Pork-128.png")
-    p Scallops
+      p Scallops
       img(src="https://cdn1.iconfinder.com/data/icons/food-43/57/scallop-128.png")
-    p Shrimp
+      p Shrimp
       img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Shrimp-128.png")
-    p Crab
+      p Crab
       img(src="https://cdn0.iconfinder.com/data/icons/food-icons-rounded/110/Crab-128.png")
-    p Trout
+      p Trout
       img(src="https://cdn0.iconfinder.com/data/icons/types-of-food-stuff/32/fish-128.png")
-    p Tuna
+      p Tuna
       img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Tuna-128.png")
-    p Salmon
+      p Salmon
       img(src="https://cdn0.iconfinder.com/data/icons/asian-food/96/Salmon-128.png")
-    p Swordfish
+      p Swordfish
       img(src="https://cdn3.iconfinder.com/data/icons/fish-6/512/swordfish-128.png")
-    p Blackened Fish
+      p Blackened Fish
       img(src="https://cdn0.iconfinder.com/data/icons/symbolicons-bbq/28/fish-grilled-128.png")
 
-  div(class="dessert")
-    h3 Dessert
+  div(class="dropdown")
+    div(class="dessert")
+      h3 Dessert
       img(src="https://cdn4.iconfinder.com/data/icons/sweet/763/muffin_2-128.png")
-    p Sorbet
+    .dropdown-content-dessert
+      p Sorbet
       img(src="https://cdn3.iconfinder.com/data/icons/kitchen-utensils/800/Food_and_Drinks-14-128.png")
-    p Vanilla Pudding
+      p Vanilla Pudding
       img(src="https://cdn2.iconfinder.com/data/icons/delicacies-1/32/ice-cream-sugar-sweet-dessert-bowl-treat-128.png")
-    p Apple Pie
+      p Apple Pie
       img(src="https://cdn3.iconfinder.com/data/icons/food-drinks-1-1/128/pie-128.png")
-    p Creme Brulee
+      p Creme Brulee
       img(src="https://cdn2.iconfinder.com/data/icons/bakery-3/100/02-128.png")
-    p Cake
+      p Cake
       img(src="https://cdn0.iconfinder.com/data/icons/shopping-3-3/97/140-128.png")
-    p Dark Chocolate
+      p Dark Chocolate
       img(src="https://cdn0.iconfinder.com/data/icons/tasty-food/154/chocolate-bar-sweet-food-128.png")
-    p Bittersweet
+      p Bittersweet
       img(src="https://cdn3.iconfinder.com/data/icons/cosmo-color-cafe/40/candy_2-128.png")
-    p Carrot Cake
+      p Carrot Cake
       img(src="https://cdn3.iconfinder.com/data/icons/food-volume-7/48/311-128.png")
+
+block scripts
+  script(src="http://code.jquery.com/jquery-2.2.1.min.js")
+  script(src="/javascript/index.js")
