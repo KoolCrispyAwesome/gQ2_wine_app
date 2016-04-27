@@ -7,18 +7,19 @@ block content
   .welcome-image
   .welcome
     .nav
-      img(src="#", alt="app logo")
+      img.logo(src="/images/logo.png", alt="logo")
 
       if(currentUser)
         .user
           a(href="/users/#{currentUser.id}") #{currentUser.first_name} #{currentUser.last_name}
       else
         .user
-          a(href="/auth/login") Log in or Sign up
+          a(href="/auth/login") Log in/Sign up
 
     .welcome-text
-      h3 Wine App
-      a(href="/matches"): button Find a match
+      h3 Winio
+      p.welcome-paragraph Lorem ipsum dolor sit amet, consectetur adipisicing elit. Architecto consequuntur magnam neque minima quaerat at consequatur, fugit veritatis sapiente accusamus quis tempore!
+      a(href="/matches"): button Try it out
 
   .team-picks
     .picks
@@ -27,13 +28,43 @@ block content
 
   .technologies
     .technologies-text
-      p.section-header Technologies 
-      | node, express, postgresql, jade, css, javascript, knex, jquery, passport, mocha, supertest
+      p.section-header Our Technologies 
+      br
+      img.tech-logo(src="/images/knex.png") 
+      img.tech-logo(src="/images/jade.png")
+      img.tech-logo(src="/images/node.png")
+      img.tech-logo(src="/images/css.png")
+      br
+      br
+      img.tech-logo(src="/images/js.png")
+      img.tech-logo(src="/images/postgresql.png")
+      img.tech-logo(src="/images/jquery.png")
+      img.tech-logo(src="/images/passport.png")
+      img.tech-logo(src="/images/mocha.png")
 
   .team
+    p.section-header The Team
     .members
+      img.profile-pic(src="/images/kyle.jpg" style="height: 200px;")
+      p
+        strong Kyle 
+      | Webdeveloper
     .members
+      img.profile-pic(src="/images/andrew.jpg" style="height: 200px;")
+      p
+        strong Andrew
+      | Webdeveloper
     .members
+      img.profile-pic(src="/images/christina.jpg" style="height: 200px;")
+      p
+        strong Christina 
+      | Webdeveloper
+
+  .footer
+    p.section-header Check out the code on Github
+    p
+      a(href="https://github.com/KoolCrispyAwesome/q2_wine_app" alt="GitHub Icon" target="_blank")
+        img.socialIcon(src="/images/github-red.png")
 
 block scripts
   script(src="http://code.jquery.com/jquery-2.2.1.min.js")
