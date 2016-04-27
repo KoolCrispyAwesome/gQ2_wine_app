@@ -7,9 +7,27 @@ const knex = require('../db/knex');
 
 beforeEach('populate database with dummy content', done => {
   return Promise.all([
-    knex('users').insert({id: 1, email: 'first@example.com', first_name: 'first', last_name: 'firstlast'}),
-    knex('users').insert({id: 2, email: 'second@example.com', first_name: 'second', last_name: 'secondlast'}),
-    knex('users').insert({id: 3, email: 'third@example.com', first_name: 'third', last_name: 'thirdlast'})
+    knex('users').insert({
+      id: 1, 
+      email: 'first@example.com', 
+      first_name: 'first', 
+      last_name: 'firstlast', 
+      photo: "http://dev.bukkit.org/thumbman/avatars/14/772/160x166/man_wearing_hat_silhouette.png.-m0.png"
+    }),
+    knex('users').insert({
+      id: 2, 
+      email: 'second@example.com', 
+      first_name: 'second', 
+      last_name: 'secondlast', 
+      photo: "http://dev.bukkit.org/thumbman/avatars/14/772/160x166/man_wearing_hat_silhouette.png.-m0.png"
+    }),
+    knex('users').insert({
+      id: 3, 
+      email: 'third@example.com', 
+      first_name: 'third', 
+      last_name: 'thirdlast', 
+      photo: "http://dev.bukkit.org/thumbman/avatars/14/772/160x166/man_wearing_hat_silhouette.png.-m0.png"
+    })
   ]).then(() => done());
 });
 
@@ -96,25 +114,25 @@ describe('GET /users/:id', () => {
   });
 });
 
-// xdescribe('PUT /users/:id', () => {
-//   var updatedUser = {
-//     user: {
-//       id: 1,
-//       email: 'firstupdated@example.com',
-//       first_name: 'firstupdated',
-//       last_name: 'firstlastupdated'
-//     }
-//   }
+describe('PUT /users/:id', () => {
+  var updatedUser = {
+    user: {
+      id: 1,
+      email: 'firstupdated@example.com',
+      first_name: 'firstupdated',
+      last_name: 'firstlastupdated'
+    }
+  };
 
-//   it('responds with JSON', done => {
-//     request(app)
-//       .put('/users/1')
-//       .type('form')
-//       .send(updatedUser)
-//       .expect('Content-Type', /json/)
-//       .expect(200, done);
-//   });
-// });
+  it('responds with JSON', done => {
+    request(app)
+      .put('/users/1')
+      .type('form')
+      .send(updatedUser)
+      .expect('Content-Type', /json/)
+      .expect(200, done);
+  });
+});
 
 // xdescribe('DELETE /users/:id', () => {
 //   it('responds with JSON', done => {

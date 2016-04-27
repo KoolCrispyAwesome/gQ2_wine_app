@@ -70,19 +70,27 @@ router.put('/:id', (req, res) => {
     editUser.email = editUser.email || user.email;
     editUser.first_name = editUser.first_name || user.first_name;
     editUser.last_name = editUser.last_name || user.last_name;
-    if(!editUser.password){
-      editUser.password = user.password;
-      knex('users').where('id', req.params.id).update(editUser, '*').then(user => {
-        res.redirect('/users');
-      });
+    if(editUser.password) {
+      editUser.password = bcrypt.hashSync(editUser.password, SALT_WORK_FACTOR);
     } else {
-      bcrypt.hash(editUser.password, SALT_WORK_FACTOR, (err, hash) => {
-        editUser.password = hash;
-        knex('users').where('id', req.params.id).update(editUser, '*').then(user => {
-          res.redirect('/users');
-        });
-      });
+      editUser.password = user.password;
     }
+
+    knex('users').where('id', req.params.id).returning('*').update(editUser).then(user => {
+      res.format({
+        default(){
+          res.status(406).send('Not Acceptable');
+        },
+        html(){
+          res.redirect('/users');
+        },
+        json(){
+          user.length ? res.send(user) : res.send({
+            msg: 'Not a valid user'
+          });
+        }
+      });
+    });
   });
 });
 

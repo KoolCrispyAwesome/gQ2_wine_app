@@ -3,6 +3,9 @@ extends ../layout.jade
 block head
   title Log In
 
+block css
+  link(rel="stylesheet", href="/stylesheets/login.css")
+
 block content
   p: strong Sign Up
   form(action='/auth/signup' method='POST')
@@ -25,6 +28,12 @@ block content
     p: small #{error}
   if(success)
     p: small #{success}
+
+  label(for="radio1")
+    input(type="radio" name="radio1")
+    img(src="https://cdn0.iconfinder.com/data/icons/veggie/64/asparagus-128.png")
+    input(type="radio" name="radio1")
+    img(src="https://cdn0.iconfinder.com/data/icons/veggie/64/asparagus-128.png")
 
 block scripts
   include ../_uploadcare.jade
