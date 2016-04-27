@@ -64,24 +64,25 @@ router.get('/:id/edit', (req, res) => {
 
 // update
 router.put('/:id', (req, res) => {
-  eval(require('locus'));
   knex('users').where('id', req.params.id).first().then(user => {
-    if(req.body.user.password !== user.password) {
-      bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {
-        bcrypt.hash(req.body.user.password, salt, (err, hash) => {
-          knex('users').where('id', req.params.id).first().update({password: hash})});
+    var editUser = req.body.user;
+    editUser.photo = editUser.photo || user.photo;
+    editUser.email = editUser.email || user.email;
+    editUser.first_name = editUser.first_name || user.first_name;
+    editUser.last_name = editUser.last_name || user.last_name;
+    if(!editUser.password){
+      editUser.password = user.password;
+      knex('users').where('id', req.params.id).update(editUser, '*').then(user => {
+        res.redirect('/users');
+      });
+    } else {
+      bcrypt.hash(editUser.password, SALT_WORK_FACTOR, (err, hash) => {
+        editUser.password = hash;
+        knex('users').where('id', req.params.id).update(editUser, '*').then(user => {
+          res.redirect('/users');
         });
+      });
     }
-    if(req.body.user.first_name !== user.first_name) {
-      knex('users').where('id', req.params.id).first().update({first_name: req.body.user.first_name});
-    }
-    if(req.body.user.last_name !== user.last_name) {
-      knex('users').where('id', req.params.id).first().update({last_name: req.body.user.last_name});
-    }
-    if(req.body.user.email !== user.email) {
-     knex('users').where('id', req.params.id).first().update({email: req.body.user.email});
-    }
-    res.redirect('/users');
   });
 });
 
