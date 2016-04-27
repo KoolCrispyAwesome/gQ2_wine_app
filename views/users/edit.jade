@@ -3,8 +3,12 @@ extends ../layout.jade
 block content
   h3 User Preferences
   form(action="/users/#{user.id}?_method=PUT" method="POST")
+    input(type="hidden" name="user[photo]" role="uploadcare-uploader" data-crop="300:300" data-images-only="true")
     input(type='email' name='user[email]' placeholder='email')
     input(type='text' name='user[first_name]' placeholder='first name')
     input(type='text' name='user[last_name]' placeholder='last name')
     input(type='password' name='user[password]' placeholder='password')
     input(type='submit' value='save changes')
+
+block scripts
+  include ../_uploadcare
