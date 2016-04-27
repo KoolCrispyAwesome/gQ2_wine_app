@@ -1,0 +1,46 @@
+.header {
+  background-color: lightgrey;
+  border: 1px solid darkgrey;
+  border-radius: 4px 4px 0 0;
+}
+
+.header p {
+  margin: 10px;
+}
+
+.form {
+  padding: 0 10px 10px;
+  border: 1px solid darkgrey;
+  border-radius: 0 0 4px 4px;
+}
+
+button {
+  display: block;
+  font-size: 14px;
+  height: 40px;
+  padding: 8px;
+  margin-top: 20px;
+  border: none;
+  background-color: lightgrey;
+  border-radius: 4px;
+}
+
+label {
+  display: block;
+  margin: 20px 0 10px;
+}
+
+input {
+  font-size: 14px;
+  width: 400px;
+  padding: 8px;
+  border: 1px solid darkgrey;
+  border-radius: 4px;
+}
+
+img {
+  display: block;
+  width: 125px;
+  height: 125px;
+  margin-bottom: 10px;
+}

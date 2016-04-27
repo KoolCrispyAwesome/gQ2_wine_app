@@ -6,7 +6,7 @@ block head
 block content
   p: strong Sign Up
   form(action='/auth/signup' method='POST')
-    input(type="hidden" name="user[photo]" role="uploadcare-uploader" data-crop="300:300" data-images-only="true")
+    input(type="hidden" name="user[photo]" role="uploadcare-uploader")
     input(type='email' name='user[email]' placeholder='email')
     input(type='text' name='user[first_name]' placeholder='first name')
     input(type='text' name='user[last_name]' placeholder='last name')
