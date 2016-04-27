@@ -85,7 +85,7 @@ router.put('/:id', (req, res) => {
           res.redirect('/users');
         },
         json(){
-          user.length ? res.send(user) : res.send({
+          user.length ? res.send(user) : res.status(404).send({
             msg: 'Not a valid user'
           });
         }
