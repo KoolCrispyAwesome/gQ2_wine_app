@@ -1,4 +1,36 @@
 extends ../layout.jade
 
+block head
+  title Favorites
+
+block css
+  link(rel="stylesheet", href="/stylesheets/user_show.css")
+
 block content
-  
+  ul.nav
+    li
+      a(href="/home") LOGO
+    li(style="float:right") 
+      a(href="/users/#{currentUser.id}") #{currentUser.first_name}
+    li(style="float:right")
+      a(href="/users/#{currentUser.id}") Favorites
+
+  div.match-wrapper
+    p.section-headline The Perfect Combi
+    div.match
+      img.match-img(src="/images/food-match-icon.png")
+      p Food
+    div.match.match-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quas veritatis voluptas dolorem consectetur! Est aliquam nostrum magnam modi voluptate officiis quod iure repellendus vero asperiores natus dolor laborum, explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ea necessitatibus deserunt porro tenetur quidem commodi optio cupiditate perferendis esse id possimus in saepe totam adipisci, nesciunt quasi officia? Nisi!
+    div.match
+      img.match-img(src="/images/wine-match-icon.png")
+      p Wine
+
+  div.match-wrapper
+    p.section-headline The Perfect Combi
+    div.match
+      img.match-img(src="/images/food-match-icon.png")
+      p Food
+    div.match.match-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quas veritatis voluptas dolorem consectetur! Est aliquam nostrum magnam modi voluptate officiis quod iure repellendus vero asperiores natus dolor laborum, explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ea necessitatibus deserunt porro tenetur quidem commodi optio cupiditate perferendis esse id possimus in saepe totam adipisci, nesciunt quasi officia? Nisi!
+    div.match
+      img.match-img(src="/images/wine-match-icon.png")
+      p Wine
