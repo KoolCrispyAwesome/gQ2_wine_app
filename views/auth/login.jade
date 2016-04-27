@@ -3,6 +3,9 @@ extends ../layout.jade
 block head
   title Log In
 
+block css
+  link(rel="stylesheet", href="/stylesheets/login.css")
+
 block content
   p: strong Sign Up
   form(action='/auth/signup' method='POST')
