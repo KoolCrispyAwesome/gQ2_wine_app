@@ -3,8 +3,10 @@ exports.up = function(knex, Promise) {
     t.increments();
     t.text('user_id');
     t.integer('wine_id');
-    t.integer('mains_id');
-    t.integer('sides_id');
+    t.integer('meat_id');
+    t.integer('veggie_id');
+    t.integer('cheese_id');
+    t.integer('dessert_id');
   });
 };
 
