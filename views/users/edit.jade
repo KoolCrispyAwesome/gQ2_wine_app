@@ -1,10 +1,29 @@
 extends ../layout.jade
 
+block css
+  link(rel="stylesheet", href="/stylesheets/user_edit.css")
+
 block content
-  h3 User Preferences
-  form(action="/users/#{user.id}?_method=PUT" method="POST")
-    input(type='email' name='user[email]' placeholder='email')
-    input(type='text' name='user[first_name]' placeholder='first name')
-    input(type='text' name='user[last_name]' placeholder='last name')
-    input(type='password' name='user[password]' placeholder='password')
-    input(type='submit' value='save changes')
+  .header: p: strong Account Settings
+  .form
+    form(action="/users/#{user.id}?_method=PUT" method="POST")
+      label(for="user-photo"): strong Profile Picture
+      img(src=user.photo, alt="user avatar")
+      input(type="hidden" name="user[photo]" role="uploadcare-uploader")
+
+      label(for="user-email"): strong Email
+      input(type='email' name='user[email]' placeholder='email')
+
+      label(for="user-first-name"): strong First Name
+      input(type='text' name='user[first_name]' placeholder='first name')
+
+      label(for="user-last-name"): strong Last Name
+      input(type='text' name='user[last_name]' placeholder='last name')
+
+      label(for="user-password"): strong Password
+      input(type='password' name='user[password]' placeholder='password')
+
+      button(type='submit'): strong Update Profile
+
+block scripts
+  include ../_uploadcare

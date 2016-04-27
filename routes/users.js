@@ -64,6 +64,7 @@ router.get('/:id/edit', (req, res) => {
 
 // update
 router.put('/:id', (req, res) => {
+  eval(require('locus'));
   knex('users').where('id', req.params.id).first().then(user => {
     if(req.body.user.password !== user.password) {
       bcrypt.genSalt(SALT_WORK_FACTOR, (err, salt) => {

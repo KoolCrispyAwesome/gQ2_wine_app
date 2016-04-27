@@ -4,24 +4,27 @@ block head
   title Log In
 
 block content
-  h3 Log in
-  
-  if(error)
-    p #{error}
-
+  p: strong Sign Up
   form(action='/auth/signup' method='POST')
+    input(type="hidden" name="user[photo]" role="uploadcare-uploader")
     input(type='email' name='user[email]' placeholder='email')
     input(type='text' name='user[first_name]' placeholder='first name')
     input(type='text' name='user[last_name]' placeholder='last name')
     input(type='password' name='user[password]' placeholder='password')
     input(type='submit' value='sign up')
 
+  p: strong Log In
   form(action='/auth/login' method='POST')
     input(type='email' name='user[email]' placeholder='email')
     input(type='password' name='user[password]' placeholder='password')
     input(type='submit' value='log in')
 
   div: a(href='/auth/facebook'): button Log in with Facebook
-
+  
+  if(error)
+    p: small #{error}
   if(success)
-    p #{success}
+    p: small #{success}
+
+block scripts
+  include ../_uploadcare
