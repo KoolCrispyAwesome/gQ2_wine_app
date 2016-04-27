@@ -3,6 +3,11 @@ img {
   width: 100px;
 }
 
+button {
+  height: 50px;
+  width: 100px;
+}
+
 .dropdown-content-veggies {
     display: none;
     position: absolute;
