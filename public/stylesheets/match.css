@@ -2,6 +2,9 @@ body {
   font-family: Helvetica, Arial;
 }
 
+.error {
+  margin: 0;
+}
 /*MATCH SECTION*/
 .match-wrapper {
   height: 500px;
@@ -50,11 +53,18 @@ button {
 
 .wine-img {
   height: 300px;
+  width: auto;
 }
 
 .wine-name {
   font-weight: bold;
   color: rgb(109, 2, 2); 
+}
+
+.box {
+  height: 300px;
+  width: 300px;
+  color: rgb(109, 2, 2);
 }
 
 /*RECIPE SECTION*/
