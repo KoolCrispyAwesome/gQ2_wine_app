@@ -1,8 +1,10 @@
-
+body {
+    font-family: Helvetica, Arial;
+}
 .err{
     font-weight: bold;
     margin: -10px;
-    color: rgb(238, 114, 114)
+    color: black;
 }
 
 div > img {
@@ -10,24 +12,29 @@ div > img {
     width: 100px;
 }
 
-.button-wrapper{
+button {
+    background-color: rgb(109, 2, 2);
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-decoration: none;
+    margin: 120px auto;
+    font-size: 16px;
+    outline: 0;
     box-sizing: border-box;
     position: absolute;
-    top: 500px;
-    right: 5%;
+    top: 300px;
+    right: 45%;
     text-align: center;
 }
 
-button {
-    font: Arial;  
-    font-size: 17px;
-    cursor: pointer;
+.section-heading {
+    color: rgb(109, 2, 2);
     font-weight: bold;
-    height: 50px;
-    width: 100px;
-    border-radius: 5px;
-    background-color: rgb(109, 2, 2); 
-    color: white;
+    font-size: 20px;
+    white-space: pre;
+    margin: 0;
+    padding: 0;
 }
 
 .v {
@@ -60,17 +67,17 @@ button {
     background-color: rgb(238, 114, 114);
 }
 
-p {
-    text-align: center;
-    font: Arial;
-}
-
 .match-wrapper {
     height: 500px;
-    background-color: #e7e7e7;
+    background-color: white;
     font-family: Arial;
     padding-top: 20px;
     text-align: center;
+}
+
+.gray-wrapper {
+    height: 200px;
+    background-color: rgb(243, 243, 243);
 }
 
 .dropdown-content-veggies {

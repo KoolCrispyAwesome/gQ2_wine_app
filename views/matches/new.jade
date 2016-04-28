@@ -9,7 +9,9 @@ block content
   .match-wrapper
     if (error)
       p.err= error
-    h2 Please select an item you wish to match. You may select up to one item from each catagory.
+    p.section-heading 
+      | What are you having for dinner?
+      | Select an item from each category
     form(action="/matches" method="POST")
       .button-wrapper
         button(type='submit') Submit
@@ -220,7 +222,7 @@ block content
             p Carrot Cake
             input(type="radio" name="matches[dessert]" value="carrot cake")
             img(src="https://cdn3.iconfinder.com/data/icons/food-volume-7/48/311-128.png")
-
+  div.gray-wrapper
       
 block scripts
   script(src="/javascript/index.js")

@@ -8,7 +8,6 @@ body {
 /*MATCH SECTION*/
 .match-wrapper {
   height: 500px;
-  background-color: #e7e7e7;
   font-family: Arial;
   padding-top: 20px;
   text-align: center;
@@ -17,8 +16,8 @@ body {
 .match {
   display: inline-block;
   width: 350px;
-  height: 300px;
-  vertical-align: top;
+  height: 250px;
+  vertical-align: top;  
 }
 
 .match:nth-child(even) {
@@ -33,6 +32,10 @@ body {
 .match-text {
   padding: 40px 0 0 0;
   margin: 0;
+}
+
+.background-img {
+  height: 600px;
 }
 
 button {
@@ -71,6 +74,7 @@ button {
 .recipe-wrapper {
   height: 500px;
   font-family: Arial;
+  background-color: #e7e7e7;
   padding-top: 20px;
   overflow: hidden;
   text-align: center;
