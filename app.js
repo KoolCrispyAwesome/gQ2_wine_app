@@ -10,7 +10,7 @@ const flash = require('connect-flash');
 const cookieSession = require('cookie-session');
 const knex = require('./db/knex');
 const routes = require('./routes');
-if(process.env.NODE_ENV === 'development'){
+if(process.env.NODE_ENV !== 'production'){
   require('dotenv').load();
 }
 
