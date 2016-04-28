@@ -24,28 +24,24 @@ router.get('/', auth.ensureAuthenticated, (req, res) => {
 
 // show
 router.get('/:id', (req, res) => {
-  knex('users').where('id', req.params.id).first().then(user => {
-    delete user.password;
-    delete user.facebook_id;
-    knex.select('m.*', 'w.name', 'w.image', 'w.pairing', 'w.about').from('users_favs as uf').where('user_id', req.params.id)
-      .join('matches as m', 'm.id', 'uf.match_id').join('wines as w', 'w.id', 'm.wine_id').then(matches => {
-        res.format({
-          default(){
-            res.status(406).send('Not Acceptable');
-          },
-          html(){
-            res.render('users/show',{user, matches});
-          },
-          json(){
-            if(user) {
-              res.send(user);
-            } else {
-              res.status(404).send();
-            }
+  knex.select('m.*', 'w.name', 'w.image', 'w.pairing', 'w.about').from('users_favs as uf').where('user_id', req.params.id)
+    .join('matches as m', 'm.id', 'uf.match_id').join('wines as w', 'w.id', 'm.wine_id').then(matches => {
+      res.format({
+        default(){
+          res.status(406).send('Not Acceptable');
+        },
+        html(){
+          res.render('users/show',{matches});
+        },
+        json(){
+          if(user) {
+            res.send(user);
+          } else {
+            res.status(404).send();
           }
-        });
+        }
       });
-  });
+    });
 });
 
 router.use(auth.ensureCorrectUser);
