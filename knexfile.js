@@ -28,10 +28,10 @@ module.exports = {
     }
   },
 
-  staging: {
+  production: {
     client: 'postgresql',
     connection: {
-      database: 'my_db',
+      database: process.env.DATABASE_URL,
       user:     'username',
       password: 'password'
     },
@@ -44,7 +44,7 @@ module.exports = {
     }
   },
 
-  production: {
+  staging: {
     client: 'postgresql',
     connection: {
       database: 'my_db',
