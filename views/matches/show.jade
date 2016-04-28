@@ -13,14 +13,18 @@ block content
   div.match-wrapper
     p.section-headline The Perfect Combi
     div.match
-      img.match-img(src="/images/food-match-icon.png")
+      //- img.match-img(src="/images/food-match-icon.png")
+      p=match.veggie
+      p=match.cheese
+      p=match.meat
+      p=match.dessert
       p Food
     div.match.match-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quas veritatis voluptas dolorem consectetur! Est aliquam nostrum magnam modi voluptate officiis quod iure repellendus vero asperiores natus dolor laborum, explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ea necessitatibus deserunt porro tenetur quidem commodi optio cupiditate perferendis esse id possimus in saepe totam adipisci, nesciunt quasi officia? Nisi!
     div.match
-      //- img.match-img(src="/images/wine-match-icon.png")
-      img.match-img(src=match.image)
+      img.match-img(src= match.image)
       p= match.name
-    button(href="#") Save to favorites
+    form(action="/users/#{currentUser.id}" method="POST")
+      input(type="submit") Save to favorites
   
   div.recipe-wrapper
     p.section-headline Need Some Inspiration?
