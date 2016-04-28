@@ -19,21 +19,22 @@ block content
           a#modal_trigger(href="#modal") Log in | Sign up
 
     .welcome-text
-      h1 winio
+      h1 Thirsty?
       p.welcome-paragraph 
-        | Are you having friends over for dinner? 
-        | Have you already planned the perfect meal, 
-        | but still haven't found a wine to go with it? 
+        | We know the feeling. 
+        | You are having friends over for dinner and 
+        | have already planned the perfect meal.
+        | But you still haven't found a wine to go with it.
         | Winio can help you! 
       a(href="/matches"): button Try it out
 
   .team-picks
+    p.section-header Winio's Favorites
     .picks
     .picks
     .picks
 
   .technologies
-    .technologies-text
       p.section-header The Technologies 
       br
       img.tech-logo(src="/images/knex.png") 
@@ -49,20 +50,20 @@ block content
       img.tech-logo(src="/images/mocha.png")
 
   .team
-    p.section-header The Team
+    p.team-header The Team
     .members
       img.profile-pic(src="/images/christina.jpg" style="height: 200px;")
-      p
+      p.members-names
         strong Christina 
       | Co-founder and CEO
     .members
       img.profile-pic(src="/images/andrew.jpg" style="height: 200px;")
-      p
+      p.members-names
         strong Andrew
       | Co-founder and CTO
     .members
       img.profile-pic(src="/images/kyle.jpg" style="height: 200px;")
-      p
+      p.members-names
         strong Kyle 
       | Co-founder and C3PO
 
@@ -99,7 +100,7 @@ block content
       div.user_login
         form(action='/auth/login' method='POST')
           label Email
-          input(type='email' name='user[email]' required)
+          input(type='email' name='user[email]' required autofocus)
           br
           label Password
           input(type='password' name='user[password]' required)
@@ -115,7 +116,7 @@ block content
       div.user_register
         form(action='/auth/signup' method='POST')
           label First Name
-          input(type='text' name='user[first_name]' required)
+          input(type='text' name='user[first_name]' required autofocus)
           br
           label Last Name
           input(type='text' name='user[last_name]' required)
