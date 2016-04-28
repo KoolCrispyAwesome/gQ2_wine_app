@@ -4,7 +4,11 @@ const matching = require('../helpers/matching');
 const knex = require('../db/knex');
 
 router.get('/', (req, res) => {
-  res.render('matches/index', {error: req.flash('error')})
+  res.render('matches/index');
+});
+
+router.get('/new', (req, res) => {
+  res.render('matches/new', {error: req.flash('error')});
 });
 
 router.get('/:id', (req, res) => {
@@ -29,6 +33,12 @@ router.post('/', (req, res) => {
     knex('matches').insert(choices, '*').then(pairing => {
       res.redirect(`/matches/${pairing[0].id}`);
     });
+  });
+});
+
+router.delete('/:id', (req, res) => {
+  knex('matches').where('id', req.params.id).returning('*').del().then(match => {
+    res.redirect(`/users/${match.user_id}`);
   });
 });
 
