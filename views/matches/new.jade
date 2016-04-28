@@ -2,18 +2,10 @@ extends ../layout.jade
 
 block css
   link(rel="stylesheet", href="/stylesheets/index.css")
+  link(rel="stylesheet", href="/stylesheets/navbar.css")
 
 block content
-  ul.nav
-    li
-      a(href="/home") LOGO
-    li(style="float:right") 
-      if(currentUser)
-        .user
-          a(href="/users/#{currentUser.id}") #{currentUser.first_name} #{currentUser.last_name}
-      else
-        .user
-          a(href="/auth/login") Log in | Sign up
+  include ../_navbar.jade
   .match-wrapper
     if (error)
       p.err= error
@@ -229,7 +221,8 @@ block content
             input(type="radio" name="matches[dessert]" value="carrot cake")
             img(src="https://cdn3.iconfinder.com/data/icons/food-volume-7/48/311-128.png")
 
+
       
 block scripts
-  script(src="https://code.jquery.com/jquery-2.2.1.min.js")
+  script(src="http://code.jquery.com/jquery-2.2.1.min.js")
   script(src="/javascript/index.js")
