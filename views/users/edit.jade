@@ -7,23 +7,23 @@ block content
   .header: p: strong Account Settings
   .form
     form(action="/users/#{user.id}?_method=PUT" method="POST")
-      label(for="user-photo"): strong Profile Picture
+      label(for="user-photo") Profile Picture
       img(src=user.photo, alt="user avatar")
       input(type="hidden" name="user[photo]" role="uploadcare-uploader")
 
-      label(for="user-email"): strong Email
-      input(type='email' name='user[email]' placeholder='email')
+      label(for="user-first-name") First Name
+      input(type='text' name='user[first_name]')
 
-      label(for="user-first-name"): strong First Name
-      input(type='text' name='user[first_name]' placeholder='first name')
+      label(for="user-last-name") Last Name
+      input(type='text' name='user[last_name]')
 
-      label(for="user-last-name"): strong Last Name
-      input(type='text' name='user[last_name]' placeholder='last name')
+      label(for="user-email") Email
+      input(type='email' name='user[email]')
 
-      label(for="user-password"): strong Password
-      input(type='password' name='user[password]' placeholder='password')
+      label(for="user-password") Password
+      input(type='password' name='user[password]')
 
-      button(type='submit'): strong Update Profile
+      button(type='submit') Update Profile
 
 block scripts
   include ../_uploadcare.jade
