@@ -1,41 +1,48 @@
-.header {
-  background-color: lightgrey;
-  border: 1px solid darkgrey;
-  border-radius: 4px 4px 0 0;
+* { 
+  font-family: Arial;
 }
 
-.header p {
-  margin: 10px;
+.header {
+  background-color: rgb(231, 231, 231);
+  width: 50%;
+  margin: 0 auto;
+}
+
+p {
+  margin: 0;
+  padding: 20px;
+  color: rgb(102, 102, 102);
 }
 
 .form {
-  padding: 0 10px 10px;
-  border: 1px solid darkgrey;
-  border-radius: 0 0 4px 4px;
+  box-sizing: border-box;
+  padding: 0 20px 20px;
+  border: 1px solid rgb(221, 221, 221);
+  width: 50%;
+  margin: 0 auto;
 }
 
 button {
   display: block;
-  font-size: 14px;
   height: 40px;
   padding: 8px;
   margin-top: 20px;
+  font-size: 14px;
+  color: white;
   border: none;
-  background-color: lightgrey;
-  border-radius: 4px;
+  background: rgb(109, 2, 2);
 }
 
 label {
   display: block;
-  margin: 20px 0 10px;
+  margin: 20px 0 5px;
 }
 
 input {
   font-size: 14px;
-  width: 400px;
+  width: 96%;
   padding: 8px;
-  border: 1px solid darkgrey;
-  border-radius: 4px;
+  border: 1px solid #DDD;
 }
 
 .form img {
@@ -43,4 +50,9 @@ input {
   width: 125px;
   height: 125px;
   margin-bottom: 10px;
+}
+
+.form .uploadcare-widget-button {
+  border-radius: 0;
+  background: rgb(109, 2, 2);
 }
