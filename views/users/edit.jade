@@ -2,8 +2,11 @@ extends ../layout.jade
 
 block css
   link(rel="stylesheet", href="/stylesheets/user_edit.css")
+  link(rel="stylesheet", href="/stylesheets/navbar.css")
 
 block content
+  include ../_navbar.jade
+
   .header: p: strong Account Settings
   .form
     form(action="/users/#{user.id}?_method=PUT" method="POST")
@@ -12,7 +15,7 @@ block content
       input(type="hidden" name="user[photo]" role="uploadcare-uploader")
 
       label(for="user-first-name") First Name
-      input(type='text' name='user[first_name]')
+      input(type='text' name='user[first_name]' autofocus)
 
       label(for="user-last-name") Last Name
       input(type='text' name='user[last_name]')

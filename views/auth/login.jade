@@ -4,30 +4,55 @@ block head
   title Log In
 
 block css
+  link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css")
   link(rel="stylesheet", href="/stylesheets/login.css")
+  link(rel="stylesheet", href="/stylesheets/navbar.css")
 
 block content
-  p: strong Sign Up
-  form(action='/auth/signup' method='POST')
-    input(type="hidden" name="user[photo]" role="uploadcare-uploader")
-    input(type='email' name='user[email]' placeholder='email')
-    input(type='text' name='user[first_name]' placeholder='first name')
-    input(type='text' name='user[last_name]' placeholder='last name')
-    input(type='password' name='user[password]' placeholder='password')
-    input(type='submit' value='sign up')
-
-  p: strong Log In
-  form(action='/auth/login' method='POST')
-    input(type='email' name='user[email]' placeholder='email')
-    input(type='password' name='user[password]' placeholder='password')
-    input(type='submit' value='log in')
-
-  div: a(href='/auth/facebook'): button Log in with Facebook
+  include ../_navbar.jade
   
-  if(error)
-    p: small #{error}
-  if(success)
-    p: small #{success}
+  .wrapper
+    if(error)
+      p: small #{error}
+    if(success)
+      p: small #{success}
+
+    .signup
+      p.action Sign up
+      form(action="/users" method="POST")
+        label(for="user-photo") Profile Picture
+        input(type="hidden" name="user[photo]" role="uploadcare-uploader")
+
+        label(for="user-first-name") First Name
+        input(type='text' name='user[first_name]' autofocus)
+
+        label(for="user-last-name") Last Name
+        input(type='text' name='user[last_name]')
+
+        label(for="user-email") Email
+        input(type='email' name='user[email]')
+
+        label(for="user-password") Password
+        input(type='password' name='user[password]')
+
+        button(type='submit') Register
+
+    .login
+      p.action Login
+      form(action="/auth/login" method="POST")
+        label(for="user-email") Email
+        input(type='email' name='user[email]')
+
+        label(for="user-password") Password
+        input(type='password' name='user[password]')
+
+        button(type='submit') Login
+
+      .fb-login
+        a(href='/auth/facebook')
+         button.fb-button
+          i(class="fa fa-facebook-official" aria-hidden="true")
+          | Log in with Facebook
 
 block scripts
   include ../_uploadcare.jade

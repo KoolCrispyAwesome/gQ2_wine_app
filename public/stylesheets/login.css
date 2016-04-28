@@ -1,0 +1,76 @@
+* {
+  font-family: Arial;
+}
+
+.wrapper {
+  margin: 0 auto;
+  margin-top: 10px;
+  width: 50%;
+  height: 600px;
+}
+
+label {
+  display: block;
+  margin: 15px 0 5px;
+}
+
+input {
+  font-size: 13px;
+  border: 1px solid #DDD;
+  padding: 8px;
+  width: 90%;
+}
+
+button {
+  display: block;
+  height: 40px;
+  padding: 8px;
+  margin-top: 20px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  background: rgb(109, 2, 2);
+  cursor: pointer;
+}
+
+a {
+  text-decoration: none;
+}
+
+.action {
+  font-weight: bold;
+  font-size: 18px;
+}
+
+.signup, .login {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 50%;
+  height: 400px;
+}
+
+.signup {
+  padding-right: 50px;
+}
+
+.login {
+  border-left: 1px solid rgb(221, 221, 221);
+  vertical-align: top;
+  padding-left: 50px;
+}
+
+.fb-button {
+  background-color: rgb(65, 94, 155);
+}
+
+form .uploadcare-widget-button {
+  border-radius: 0;
+  background: rgb(109, 2, 2);
+  font-size: 14px;
+  padding: 8px;
+  cursor: pointer;
+}
+
+i {
+  margin-right: 5px;
+}

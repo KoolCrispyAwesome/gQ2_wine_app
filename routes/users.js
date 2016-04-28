@@ -42,6 +42,10 @@ router.get('/:id', (req, res) => {
   })
 });
 
+router.post('/:id', (req, res) => {
+  
+});
+
 // edit
 router.get('/:id/edit', (req, res) => {
   knex('users').where('id', req.params.id).first().then(user => {

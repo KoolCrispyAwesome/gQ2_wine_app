@@ -8,7 +8,7 @@ const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
 
 router.get('/login', (req, res) => {
-  res.render('home', {error: req.flash('error'), success: req.flash('success')});
+  res.render('auth/login', {error: req.flash('error'), success: req.flash('success')});
 });
 
 router.post('/login', passport.authenticate('local', {
