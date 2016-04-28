@@ -4,7 +4,7 @@ const matching = require('../helpers/matching');
 const knex = require('../db/knex');
 
 router.get('/', (req, res) => {
-  res.render('matches/index')
+  res.render('matches/index', {error: req.flash('error')})
 });
 
 router.get('/:id', (req, res) => {
@@ -18,6 +18,10 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  if (!Object.keys(req.body).length){
+    req.flash('error', 'You must select at least one item.');
+    res.redirect('/matches');
+  }
   var choices = req.body.matches;
   var wine = matching.wineMatch(choices.veggie, choices.cheese, choices.meat, choices.dessert);
   knex('wines').where('name', wine).first().then(wine => {
