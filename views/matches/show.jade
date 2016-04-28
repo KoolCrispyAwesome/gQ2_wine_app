@@ -9,14 +9,15 @@ block css
 block content
   ul.nav
     li
-      a(href="/home") LOGO
+      a(href="/home")
+        img.logo-red(src="/images/logo-red.png")
     li(style="float:right") 
       if(currentUser)
         .user
           a(href="/users/#{currentUser.id}") #{currentUser.first_name} #{currentUser.last_name}
       else
         .user
-          a(href="/auth/login") Log in or Sign up
+          a(href="/auth/login") Log in | Sign up
     //- li(style="float:right")
     //-   a(href="/users/#{currentUser.id}") Favorites
   

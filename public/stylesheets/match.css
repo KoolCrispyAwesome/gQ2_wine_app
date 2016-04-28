@@ -15,7 +15,7 @@ li {
 }
 li a {
     display: block;
-    color: rgb(238, 114, 114);
+    color: rgb(109, 2, 2);
     font-family: arial;
     text-align: center;
     padding: 14px 16px;
@@ -90,7 +90,7 @@ button {
   height: 300px;
 }
 .section-headline {
-  color: rgb(238, 114, 114);
+  color: rgb(109, 2, 2);
   font-size: 20px;
 }
 .recipe-headline {
@@ -105,4 +105,7 @@ button {
 }
 img {
   width: 600px;
+}
+.logo-red {
+  width: 60%;
 }
