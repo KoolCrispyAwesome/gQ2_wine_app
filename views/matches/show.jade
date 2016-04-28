@@ -9,6 +9,9 @@ block css
 
 block content
   include ../_navbar.jade
+
+  if(error)
+    p= error
   
   div.match-wrapper
     p.section-headline The Perfect Combi
@@ -20,10 +23,9 @@ block content
       p=match.dessert
     div.match.match-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quas veritatis voluptas dolorem consectetur! Est aliquam nostrum magnam modi voluptate officiis quod iure repellendus vero asperiores natus dolor laborum, explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ea necessitatibus deserunt porro tenetur quidem commodi optio cupiditate perferendis esse id possimus in saepe totam adipisci, nesciunt quasi officia? Nisi!
     div.match
-      img.wine-img(src= match.image)
-      p.wine-name
-        strong= match.name
-    form(action="/users/#{currentUser.id}" method="POST")
+      img.match-img(src= match.image)
+      p= match.name
+    form(action="/matches/#{match.id}" method="POST")
       button(type="submit") Save to favorites
   
   div.recipe-wrapper

@@ -1,7 +1,8 @@
 const express = require('express');
 const router = express.Router();
-const matching = require('../helpers/matching');
 const knex = require('../db/knex');
+const matching = require('../helpers/matching');
+const auth = require('../helpers/authHelpers');
 
 router.get('/', (req, res) => {
   knex('matches').then(matches => {
@@ -18,7 +19,7 @@ router.get('/:id', (req, res) => {
     knex('wines').where('id', match.wine_id).first().then( wine => {
       delete wine.id;
       Object.assign(match, wine);
-      res.render('matches/show', {match});
+      res.render('matches/show', {match, error: req.flash('error')});
     });
   });
 });
@@ -35,6 +36,14 @@ router.post('/', (req, res) => {
     knex('matches').insert(choices, '*').then(pairing => {
       res.redirect(`/matches/${pairing[0].id}`);
     });
+  });
+});
+
+router.post('/:id', auth.ensureFavorite, (req, res) => {
+  var user = res.locals.currentUser;
+
+  knex('users_favs').insert({user_id: user.id, match_id: req.params.id}).then(() => {
+    res.redirect(`/users/${user.id}`);
   });
 });
 
