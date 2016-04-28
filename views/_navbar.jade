@@ -5,7 +5,7 @@
         img.logo-red(src="/images/logo-red.png")
     li 
       if(currentUser)
-        a.link(href="/users/#{currentUser.id}") #{currentUser.first_name}
+        a.link(href="/users/#{currentUser.id}/edit") #{currentUser.first_name}
         a.link(href="/users/#{currentUser.id}") Favorites
         a.link(href="/matches/new") New Match
         a.link(href="/matches") Explore
