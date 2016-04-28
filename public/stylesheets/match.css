@@ -65,6 +65,10 @@ button {
   margin-top: 40px;
 }
 
+.vRow1 {
+  float: left;
+}
+
 /*RECIPE SECTION*/
 .recipe-wrapper {
   height: 500px;

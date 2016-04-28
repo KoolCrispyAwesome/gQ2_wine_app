@@ -4,215 +4,231 @@ block css
   link(rel="stylesheet", href="/stylesheets/index.css")
 
 block content
-  form(action="/matches" method="POST")
-    button(type='submit') Submit
-    div(class="dropdown")
-      div(class="veggies")
-        h3 Veggies
-        img(src="https://cdn2.iconfinder.com/data/icons/restaurant-1/100/vegan_food_meal_dinner_lunch_restaurant_vegetables-128.png")
-      .dropdown-content-veggies
-          div(id="asparagus")
+  ul.nav
+    li
+      a(href="/home") LOGO
+    li(style="float:right") 
+      if(currentUser)
+        .user
+          a(href="/users/#{currentUser.id}") #{currentUser.first_name} #{currentUser.last_name}
+      else
+        .user
+          a(href="/auth/login") Log in | Sign up
+  .match-wrapper
+    if (error)
+      p.err= error
+    h2 Please select an item you wish to match. You may select up to one item from each catagory.
+    form(action="/matches" method="POST")
+      .button-wrapper
+        button(type='submit') Submit
+      div(class="dropdown")
+        div(class="veggies")
+          h3 Veggies
+          img(src="https://cdn2.iconfinder.com/data/icons/restaurant-1/100/vegan_food_meal_dinner_lunch_restaurant_vegetables-128.png")
+        .dropdown-content-veggies 
+          div(class="v" id="asparagus")
             p Asparagus
             input(type="radio" name="matches[veggie]" value="asparagus")
             img(src="https://cdn0.iconfinder.com/data/icons/veggie/64/asparagus-128.png")
-          div(id="squash")
+          div(class="v" id="squash")
             p Squash
             input(type="radio" name="matches[veggie]" value="squash")
             img(src="http://vignette3.wikia.nocookie.net/herebemonsters/images/2/23/Squash.png/revision/latest?cb=20121215122527")
-          div(id="chilli peppers")
+          div(class="v" id="chilli peppers")
             p Chilli Peppers
             input(type="radio" name="matches[veggie]" value="chilli peppers")
             img(src="https://cdn3.iconfinder.com/data/icons/cosmo-color-vegetables/40/pepper_chili-128.png")
-          div(id="mushrooms")
+          div(class="v" id="mushrooms")
             p Mushrooms
             input(type="radio" name="matches[veggie]" value="mushrooms")
             img(src="https://cdn3.iconfinder.com/data/icons/autumn-1/512/mushrooms-128.png")
-          div(id="tomatoes")
+          div(class="v" id="tomatoes")
             p Tomatoes
             input(type="radio" name="matches[veggie]" value="tomatoes")
             img(src="https://cdn3.iconfinder.com/data/icons/food-volume-8/48/377-128.png")
-          div(id="onions")
+          div(class="v" id="onions")
             p Onions
             input(type="radio" name="matches[veggie]" value="onions")
             img(src="https://cdn4.iconfinder.com/data/icons/vegetables-i/90/03-128.png")
-          div(id="broccoli")
+          div(class="v" id="broccoli")
             p Broccoli
             input(type="radio" name="matches[veggie]" value="broccoli")
             img(src="https://cdn0.iconfinder.com/data/icons/food-18/140/food_c_07-128.png")
-          div(id="grilled peppers")
+          div(class="v" id="grilled peppers")
             p Grilled Peppers
             input(type="radio" name="matches[veggie]" value="grilled peppers")
             img(src="https://cdn4.iconfinder.com/data/icons/vegetables-i/99/09-128.png")
 
-    div(class="dropdown")
-      div(class="cheese")
-        h3 Cheese
-        img(src="https://cdn0.iconfinder.com/data/icons/kitchen-colored-1/60/cheese-food-milk-dairy-128.png")
-      .dropdown-content-cheese
-        div(id="feta")
-          p Feta
-          input(type="radio" name="matches[cheese]" value="feta")
-          img(src="https://www.songjog.com/bazar/image/cache/data/German_Butcher_Feta_Cheese____250_gm-215x215.jpg")
-        div(id="asiago")
-          p Asiago
-          input(type="radio" name="matches[cheese]" value="asiago")
-          img(src="http://www.belecasel.com/wp-content/uploads/2013/07/real-asiago-cheese.jpg")
-        div(id="havarti")
-          p Havarti
-          input(type="radio" name="matches[cheese]" value="havarti")
-          img(src="http://www.foodsubs.com/Photos/tilsit.jpg")
-        div(id="gouda")
-          p Gouda
-          input(type="radio" name="matches[cheese]" value="gouda")
-          img(src="https://kunstkitchen.files.wordpress.com/2011/09/cheese_gouda.jpg")
-        div(id="goat cheese")
-          p Goat Cheese
-          input(type="radio" name="matches[cheese]" value="goat cheese")
-          img(src="http://www.pluswine.com/wp-content/uploads/2015/03/goat_cheese.png")
-        div(id="cheddar")
-          p Cheddar
-          input(type="radio" name="matches[cheese]" value="cheddar")
-          img(src="http://www.foodsubs.com/Photos/cheddar.jpg")
-        div(id="parmesan")
-          p Parmesan
-          input(type="radio" name="matches[cheese]" value="parmesan")
-          img(src="http://static.savvymom.ca/uploads/parmcheese_blog.jpg")
-        div(id="romano")
-          p Romano
-          input(type="radio" name="matches[cheese]" value="romano")
-          img(src="http://files.recipetips.com/images/glossary/c/cheese_romano.jpg")
-        div(id="gorgonzola")
-          p Gorgonzola
-          input(type="radio" name="matches[cheese]" value="gorgonzola")
-          img(src="http://good-cooking.co.uk/wp-content/uploads/2013/01/gorgonzola.jpg")
-        div(id="aged cheese")
-          p Aged Cheese
-          input(type="radio" name="matches[cheese]" value="aged cheese")
-          img(src="http://www.cheese.com/media/img/cheese/Beemster_Extra_Aged.png")
+      div(class="dropdown")
+        div(class="cheese")
+          h3 Cheese
+          img(src="https://cdn0.iconfinder.com/data/icons/kitchen-colored-1/60/cheese-food-milk-dairy-128.png")
+        .dropdown-content-cheese
+          div(class="c" id="feta")
+            p Feta
+            input(type="radio" name="matches[cheese]" value="feta")
+            img(src="https://www.songjog.com/bazar/image/cache/data/German_Butcher_Feta_Cheese____250_gm-215x215.jpg")
+          div(class="c" id="asiago")
+            p Asiago
+            input(type="radio" name="matches[cheese]" value="asiago")
+            img(src="http://www.belecasel.com/wp-content/uploads/2013/07/real-asiago-cheese.jpg")
+          div(class="c" id="havarti")
+            p Havarti
+            input(type="radio" name="matches[cheese]" value="havarti")
+            img(src="http://www.foodsubs.com/Photos/tilsit.jpg")
+          div(class="c" id="gouda")
+            p Gouda
+            input(type="radio" name="matches[cheese]" value="gouda")
+            img(src="https://kunstkitchen.files.wordpress.com/2011/09/cheese_gouda.jpg")
+          div(class="c" id="goat cheese")
+            p Goat Cheese
+            input(type="radio" name="matches[cheese]" value="goat cheese")
+            img(src="http://www.pluswine.com/wp-content/uploads/2015/03/goat_cheese.png")
+          div(class="c" id="cheddar")
+            p Cheddar
+            input(type="radio" name="matches[cheese]" value="cheddar")
+            img(src="http://www.foodsubs.com/Photos/cheddar.jpg")
+          div(class="c" id="parmesan")
+            p Parmesan
+            input(type="radio" name="matches[cheese]" value="parmesan")
+            img(src="http://static.savvymom.ca/uploads/parmcheese_blog.jpg")
+          div(class="c" id="romano")
+            p Romano
+            input(type="radio" name="matches[cheese]" value="romano")
+            img(src="http://files.recipetips.com/images/glossary/c/cheese_romano.jpg")
+          div(class="c" id="gorgonzola")
+            p Gorgonzola
+            input(type="radio" name="matches[cheese]" value="gorgonzola")
+            img(src="http://good-cooking.co.uk/wp-content/uploads/2013/01/gorgonzola.jpg")
+          div(class="c" id="aged cheese")
+            p Aged Cheese
+            input(type="radio" name="matches[cheese]" value="aged cheese")
+            img(src="http://www.cheese.com/media/img/cheese/Beemster_Extra_Aged.png")
 
-    div(class="dropdown")
-      div(class="meat")
-        h3 Meat
-        img(src="https://cdn4.iconfinder.com/data/icons/kitchen-10/512/Meat_Cleaver-128.png")
-      .dropdown-content-meat
-        div(id="chicken")
-          p Chicken
-          input(type="radio" name="matches[meat]" value="chicken")
-          img(src="https://cdn0.iconfinder.com/data/icons/foody-icons/32/FoodyIcons_color-02-128.png")
-        div(id="turkey")
-          p Turkey
-          input(type="radio" name="matches[meat]" value="turkey")
-          img(src="https://cdn3.iconfinder.com/data/icons/food-volume-1-1/48/07-128.png")
-        div(id="veal")
-          p Veal
-          input(type="radio" name="matches[meat]" value="veal")
-          img(src="https://cdn1.iconfinder.com/data/icons/foody-icons/32/FoodyIcons_color_02-10-128.png")
-        div(id="duck")
-          p Duck
-          input(type="radio" name="matches[meat]" value="duck")
-          img(src="https://cdn0.iconfinder.com/data/icons/types-of-poultry/32/duck-128.png")
-        div(id="lamb")
-          p Lamb
-          input(type="radio" name="matches[meat]" value="lamb")
-          img(src="https://cdn3.iconfinder.com/data/icons/colorix-easter-holidays/128/easter_religion_holidays-18-128.png")
-        div(id="filet mignon")
-          p Filet Mignon
-          input(type="radio" name="matches[meat]" value="filet mignon")
-          img(src="https://cdn4.iconfinder.com/data/icons/foods-and-meals/512/Food_Meals_grilled_beef_steak-128.png")
-        div(id="pepperoni")
-          p Pepperoni
-          input(type="radio" name="matches[meat]" value="pepperoni")
-          img(src="https://cdn1.iconfinder.com/data/icons/food-flat-3/48/105-128.png")
-        div(id="spicy sausage")
-          p Spicy Sausage
-          input(type="radio" name="matches[meat]" value="spicy sausage")
-          img(src="https://cdn0.iconfinder.com/data/icons/food-icons-4/110/Sausage-128.png")
-        div(id="steak")
-          p Steak
-          input(type="radio" name="matches[meat]" value="steak")
-          img(src="https://cdn2.iconfinder.com/data/icons/food-icons-6/200/food_steak-128.png")
-        div(id="ribeye")
-          p Ribeye
-          input(type="radio" name="matches[meat]" value="ribeye")
-          img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Steak-128.png")
-        div(id="beef")
-          p Beef
-          input(type="radio" name="matches[meat]" value="beef")
-          img(src="https://cdn0.iconfinder.com/data/icons/food-interactive-2/128/79-128.png")
-        div(id="pork")
-          p Pork
-          input(type="radio" name="matches[meat]" value="pork")
-          img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Pork-128.png")
-        div(id="scallops")
-          p Scallops
-          input(type="radio" name="matches[meat]" value="scallops")
-          img(src="https://cdn1.iconfinder.com/data/icons/food-43/57/scallop-128.png")
-        div(id="shrimp")
-          p Shrimp
-          input(type="radio" name="matches[meat]" value="shrimp")
-          img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Shrimp-128.png")
-        div(id="crab")
-          p Crab
-          input(type="radio" name="matches[meat]" value="crab")
-          img(src="https://cdn0.iconfinder.com/data/icons/food-icons-rounded/110/Crab-128.png")
-        div(id="trout")
-          p Trout
-          input(type="radio" name="matches[meat]" value="trout")
-          img(src="https://cdn0.iconfinder.com/data/icons/types-of-food-stuff/32/fish-128.png")
-        div(id="tuna")
-          p Tuna
-          input(type="radio" name="matches[meat]" value="tuna")
-          img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Tuna-128.png")
-        div(id="salmon")
-          p Salmon
-          input(type="radio" name="matches[meat]" value="salmon")
-          img(src="https://cdn0.iconfinder.com/data/icons/asian-food/96/Salmon-128.png")
-        div(id="swordfish")
-          p Swordfish
-          input(type="radio" name="matches[meat]" value="swordfish")
-          img(src="https://cdn3.iconfinder.com/data/icons/fish-6/512/swordfish-128.png")
-        div(id="blackened fish")
-          p Blackened Fish
-          input(type="radio" name="matches[meat]" value="blackened fish")
-          img(src="https://cdn0.iconfinder.com/data/icons/symbolicons-bbq/28/fish-grilled-128.png")
+      div(class="dropdown")
+        div(class="meat")
+          h3 Meat
+          img(src="https://cdn4.iconfinder.com/data/icons/kitchen-10/512/Meat_Cleaver-128.png")
+        .dropdown-content-meat
+          div(class="m" id="chicken")
+            p Chicken
+            input(type="radio" name="matches[meat]" value="chicken")
+            img(src="https://cdn0.iconfinder.com/data/icons/foody-icons/32/FoodyIcons_color-02-128.png")
+          div(class="m" id="turkey")
+            p Turkey
+            input(type="radio" name="matches[meat]" value="turkey")
+            img(src="https://cdn3.iconfinder.com/data/icons/food-volume-1-1/48/07-128.png")
+          div(class="m" id="veal")
+            p Veal
+            input(type="radio" name="matches[meat]" value="veal")
+            img(src="https://cdn1.iconfinder.com/data/icons/foody-icons/32/FoodyIcons_color_02-10-128.png")
+          div(class="m" id="duck")
+            p Duck
+            input(type="radio" name="matches[meat]" value="duck")
+            img(src="https://cdn0.iconfinder.com/data/icons/types-of-poultry/32/duck-128.png")
+          div(class="m" id="lamb")
+            p Lamb
+            input(type="radio" name="matches[meat]" value="lamb")
+            img(src="https://cdn3.iconfinder.com/data/icons/colorix-easter-holidays/128/easter_religion_holidays-18-128.png")
+          div(class="m" id="filet mignon")
+            p Filet Mignon
+            input(type="radio" name="matches[meat]" value="filet mignon")
+            img(src="https://cdn4.iconfinder.com/data/icons/foods-and-meals/512/Food_Meals_grilled_beef_steak-128.png")
+          div(class="m" id="pepperoni")
+            p Pepperoni
+            input(type="radio" name="matches[meat]" value="pepperoni")
+            img(src="https://cdn1.iconfinder.com/data/icons/food-flat-3/48/105-128.png")
+          div(class="m" id="spicy sausage")
+            p Spicy Sausage
+            input(type="radio" name="matches[meat]" value="spicy sausage")
+            img(src="https://cdn0.iconfinder.com/data/icons/food-icons-4/110/Sausage-128.png")
+          div(class="m" id="steak")
+            p Steak
+            input(type="radio" name="matches[meat]" value="steak")
+            img(src="https://cdn2.iconfinder.com/data/icons/food-icons-6/200/food_steak-128.png")
+          div(class="m" id="ribeye")
+            p Ribeye
+            input(type="radio" name="matches[meat]" value="ribeye")
+            img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Steak-128.png")
+          div(class="m" id="beef")
+            p Beef
+            input(type="radio" name="matches[meat]" value="beef")
+            img(src="https://cdn0.iconfinder.com/data/icons/food-interactive-2/128/79-128.png")
+          div(class="m" id="pork")
+            p Pork
+            input(type="radio" name="matches[meat]" value="pork")
+            img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Pork-128.png")
+          div(class="m" id="scallops")
+            p Scallops
+            input(type="radio" name="matches[meat]" value="scallops")
+            img(src="https://cdn1.iconfinder.com/data/icons/food-43/57/scallop-128.png")
+          div(class="m" id="shrimp")
+            p Shrimp
+            input(type="radio" name="matches[meat]" value="shrimp")
+            img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Shrimp-128.png")
+          div(class="m" id="crab")
+            p Crab
+            input(type="radio" name="matches[meat]" value="crab")
+            img(src="https://cdn0.iconfinder.com/data/icons/food-icons-rounded/110/Crab-128.png")
+          div(class="m" id="trout")
+            p Trout
+            input(type="radio" name="matches[meat]" value="trout")
+            img(src="https://cdn0.iconfinder.com/data/icons/types-of-food-stuff/32/fish-128.png")
+          div(class="m" id="tuna")
+            p Tuna
+            input(type="radio" name="matches[meat]" value="tuna")
+            img(src="https://cdn0.iconfinder.com/data/icons/meats-fish/512/Tuna-128.png")
+          div(class="m" id="salmon")
+            p Salmon
+            input(type="radio" name="matches[meat]" value="salmon")
+            img(src="https://cdn0.iconfinder.com/data/icons/asian-food/96/Salmon-128.png")
+          div(class="m" id="swordfish")
+            p Swordfish
+            input(type="radio" name="matches[meat]" value="swordfish")
+            img(src="https://cdn3.iconfinder.com/data/icons/fish-6/512/swordfish-128.png")
+          div(class="m" id="blackened fish")
+            p Blackened Fish
+            input(type="radio" name="matches[meat]" value="blackened fish")
+            img(src="https://cdn0.iconfinder.com/data/icons/symbolicons-bbq/28/fish-grilled-128.png")
 
-    div(class="dropdown")
-      div(class="dessert")
-        h3 Dessert
-        img(src="https://cdn4.iconfinder.com/data/icons/sweet/763/muffin_2-128.png")
-      .dropdown-content-dessert
-        div(id="sorbet")
-          p Sorbet
-          input(type="radio" name="matches[dessert]" value="sorbet")
-          img(src="https://cdn3.iconfinder.com/data/icons/kitchen-utensils/800/Food_and_Drinks-14-128.png")
-        div(id="vanilla pudding")
-          p Vanilla Pudding
-          input(type="radio" name="matches[dessert]" value="vanilla pudding")
-          img(src="https://cdn2.iconfinder.com/data/icons/delicacies-1/32/ice-cream-sugar-sweet-dessert-bowl-treat-128.png")
-        div(id="apple pie")
-          p Apple Pie
-          input(type="radio" name="matches[dessert]" value="apple pie")
-          img(src="https://cdn3.iconfinder.com/data/icons/food-drinks-1-1/128/pie-128.png")
-        div(id="creme brulee")
-          p Creme Brulee
-          input(type="radio" name="matches[dessert]" value="creme brulee")
-          img(src="https://cdn2.iconfinder.com/data/icons/bakery-3/100/02-128.png")
-        div(id="cake")
-          p Cake
-          input(type="radio" name="matches[dessert]" value="cake")
-          img(src="https://cdn0.iconfinder.com/data/icons/shopping-3-3/97/140-128.png")
-        div(id="dark chocolate")
-          p Dark Chocolate
-          input(type="radio" name="matches[dessert]" value="dark chocolate")
-          img(src="https://cdn0.iconfinder.com/data/icons/tasty-food/154/chocolate-bar-sweet-food-128.png")
-        div(id="bittersweet")
-          p Bittersweet
-          input(type="radio" name="matches[dessert]" value="bittersweet")
-          img(src="https://cdn3.iconfinder.com/data/icons/cosmo-color-cafe/40/candy_2-128.png")
-        div(id="carrot cake")
-          p Carrot Cake
-          input(type="radio" name="matches[dessert]" value="carrot cake")
-          img(src="https://cdn3.iconfinder.com/data/icons/food-volume-7/48/311-128.png")
+      div(class="dropdown")
+        div(class="dessert")
+          h3 Dessert
+          img(src="https://cdn4.iconfinder.com/data/icons/sweet/763/muffin_2-128.png")
+        .dropdown-content-dessert
+          div(class="d" id="sorbet")
+            p Sorbet
+            input(type="radio" name="matches[dessert]" value="sorbet")
+            img(src="https://cdn3.iconfinder.com/data/icons/kitchen-utensils/800/Food_and_Drinks-14-128.png")
+          div(class="d" id="vanilla pudding")
+            p Vanilla Pudding
+            input(type="radio" name="matches[dessert]" value="vanilla pudding")
+            img(src="https://cdn2.iconfinder.com/data/icons/delicacies-1/32/ice-cream-sugar-sweet-dessert-bowl-treat-128.png")
+          div(class="d" id="apple pie")
+            p Apple Pie
+            input(type="radio" name="matches[dessert]" value="apple pie")
+            img(src="https://cdn3.iconfinder.com/data/icons/food-drinks-1-1/128/pie-128.png")
+          div(class="d" id="creme brulee")
+            p Creme Brulee
+            input(type="radio" name="matches[dessert]" value="creme brulee")
+            img(src="https://cdn2.iconfinder.com/data/icons/bakery-3/100/02-128.png")
+          div(class="d" id="cake")
+            p Cake
+            input(type="radio" name="matches[dessert]" value="cake")
+            img(src="https://cdn0.iconfinder.com/data/icons/shopping-3-3/97/140-128.png")
+          div(class="d" id="dark chocolate")
+            p Dark Chocolate
+            input(type="radio" name="matches[dessert]" value="dark chocolate")
+            img(src="https://cdn0.iconfinder.com/data/icons/tasty-food/154/chocolate-bar-sweet-food-128.png")
+          div(class="d" id="bittersweet")
+            p Bittersweet
+            input(type="radio" name="matches[dessert]" value="bittersweet")
+            img(src="https://cdn3.iconfinder.com/data/icons/cosmo-color-cafe/40/candy_2-128.png")
+          div(class="d" id="carrot cake")
+            p Carrot Cake
+            input(type="radio" name="matches[dessert]" value="carrot cake")
+            img(src="https://cdn3.iconfinder.com/data/icons/food-volume-7/48/311-128.png")
+
       
 block scripts
   script(src="http://code.jquery.com/jquery-2.2.1.min.js")
