@@ -184,19 +184,23 @@ describe('DELETE /users/:id', () => {
         knex('users').where('id', 1).then(user => {
           expect(user).to.be.empty;
           done();
-        })
-      })
-  })
+        });
+      });
+  });
 
   it('returns the deleted user', done => {
     request(app)
-      .delete('/user/1')
+      .delete('/users/1')
       .set('Accept', 'application/json')
       .end((err, res) => {
-        expect(res.body[0].email).to.equal('first@example.com');
-        expect(res.body[0].first_name).to.equal('first');
-        expect(res.body[0].last_name).to.equal('firstlast');
+        expect(res.body[0]).to.deep.include({
+          id: 1, 
+          email: 'first@example.com', 
+          first_name: 'first', 
+          last_name: 'firstlast', 
+          photo: "http://dev.bukkit.org/thumbman/avatars/14/772/160x166/man_wearing_hat_silhouette.png.-m0.png"
+        });
         done();
-      })
+      });
   });
 });
