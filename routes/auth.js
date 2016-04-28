@@ -8,12 +8,12 @@ const bcrypt = require('bcrypt');
 const SALT_WORK_FACTOR = 10;
 
 router.get('/login', (req, res) => {
-  res.render('auth/login', {error: req.flash('error'), success: req.flash('success')});
+  res.render('home', {error: req.flash('error'), success: req.flash('success')});
 });
 
 router.post('/login', passport.authenticate('local', {
   successRedirect: '/users',
-  failureRedirect: '/auth/login',
+  failureRedirect: '/home',
   successFlash: true,
   failureFlash: true
 }));
@@ -27,7 +27,7 @@ router.post('/signup', (req, res) => {
       res.redirect('/users');
     }).catch(err => {
       req.flash('error', 'email is already taken');
-      res.redirect('/auth/login');
+      res.redirect('/home');
     });
   });
 });
@@ -43,7 +43,7 @@ router.get('/facebook/callback', passport.authenticate('facebook', {
 router.get('/logout', (req, res) => {
   req.logout();
   req.flash('success', 'You have successfully logged out');
-  res.redirect('/auth/login');
+  res.redirect('/home');
 });
 
 module.exports = router;
