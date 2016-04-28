@@ -39,9 +39,14 @@ body {
   width: 600px;
 }
 
+h1 {
+  margin: 0;
+}
+
 .welcome-paragraph {
   font-size: 30px;
   white-space: pre;
+  margin: 10px 10px 50px;
 }
 
 .team-picks, .team {
