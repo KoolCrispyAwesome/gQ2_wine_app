@@ -29,6 +29,8 @@ app.use(flash());
 require('./helpers/passport')(passport);
 app.use(require('./helpers/authHelpers').currentUser);
 
+app.get('/', (req, res) => res.redirect('/home'));
+
 app.get('/home', (req, res) => {  
   res.render('home');
 });
