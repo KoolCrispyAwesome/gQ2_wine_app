@@ -9,6 +9,9 @@ block css
 
 block content
   include ../_navbar.jade
+
+  if(error)
+    p= error
   
   div.match-wrapper
     p.section-headline The Perfect Combi
@@ -23,8 +26,8 @@ block content
     div.match
       img.match-img(src= match.image)
       p= match.name
-    form(action="/users/#{currentUser.id}" method="POST")
-      input(type="submit") Save to favorites
+    form(action="/matches/#{match.id}" method="POST")
+      button(type="submit") Save to favorites
   
   div.recipe-wrapper
     p.section-headline Need Some Inspiration?

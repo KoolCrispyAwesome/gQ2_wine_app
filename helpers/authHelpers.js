@@ -34,6 +34,15 @@ module.exports = {
       req.flash('error', 'You do not have correct permissions');
       return res.redirect('/users');
     }
+  }, 
+
+  ensureFavorite(req, res, next){
+    if(req.isAuthenticated()){
+      return next();
+    } else {
+      req.flash('error', 'Please log in to save pairing');
+      return res.redirect(`/matches/${req.params.id}`);
+    }
   }
 
 };
