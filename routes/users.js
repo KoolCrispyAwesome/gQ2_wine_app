@@ -96,8 +96,7 @@ router.put('/:id', (req, res) => {
 
 // delete
 router.delete('/:id', (req, res) => {
-  knex('users').where('id', req.params.id).first().del().then(user => {
-    console.log('USER:', user)
+  knex('users').where('id', req.params.id).returning('*').del().then(user => {
     res.format({
       default(){
         res.status(406).send('Not Acceptable');
@@ -106,7 +105,9 @@ router.delete('/:id', (req, res) => {
         res.redirect('/users');
       },
       json(){
-        res.send(user);
+        user.length ? res.send(user) : res.status(404).send({
+          msg: 'Not a valid user'
+        });
       }
     });
   });
