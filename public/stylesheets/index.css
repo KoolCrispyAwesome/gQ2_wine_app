@@ -46,7 +46,8 @@ li a:hover {
 
 button {
     font: Arial;  
-    font-size: 99%;
+    font-size: 17px;
+    cursor: pointer;
     font-weight: bold;
     height: 50px;
     width: 100px;
