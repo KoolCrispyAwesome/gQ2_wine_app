@@ -13,7 +13,7 @@ block content
       if(currentUser)
         .user
           a(href="/auth/logout") Logout
-          a(href="/users/#{currentUser.id}") #{currentUser.first_name}
+          a(href="/users/#{currentUser.id}/edit") #{currentUser.first_name}
       else
         .user
           a#modal_trigger(href="#modal") Log in | Sign up
