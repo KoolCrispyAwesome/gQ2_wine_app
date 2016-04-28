@@ -4,7 +4,7 @@ const knex = require('../db/knex');
 const matching = require('../helpers/matching');
 const auth = require('../helpers/authHelpers');
 
-router.get('/', (req, res) => {
+router.get('/', auth.ensureAuthenticated, (req, res) => {
   knex('matches').then(matches => {
     res.render('matches/index', {matches});
   });
@@ -44,12 +44,6 @@ router.post('/:id', auth.ensureFavorite, (req, res) => {
 
   knex('users_favs').insert({user_id: user.id, match_id: req.params.id}).then(() => {
     res.redirect(`/users/${user.id}`);
-  });
-});
-
-router.delete('/:id', (req, res) => {
-  knex('matches').where('id', req.params.id).returning('*').del().then(match => {
-    res.redirect(`/users/${match.user_id}`);
   });
 });
 

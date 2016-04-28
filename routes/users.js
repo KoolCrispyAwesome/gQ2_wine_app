@@ -3,16 +3,17 @@ const router = express.Router();
 const knex = require('../db/knex');
 const SALT_WORK_FACTOR = 10;
 const bcrypt = require('bcrypt');
+const auth = require('../helpers/authHelpers');
 
 // index
-router.get('/', (req, res) => {
+router.get('/', auth.ensureAuthenticated, (req, res) => {
   knex('users').select().then(users => {
     res.format({
       default(){
         res.status(406).send('Not Acceptable');
       },
       html(){
-        res.render('users/index',{users});
+        res.redirect(`/users/${req.user.id}`);
       },
       json(){
         res.send(users);
@@ -24,23 +25,31 @@ router.get('/', (req, res) => {
 // show
 router.get('/:id', (req, res) => {
   knex('users').where('id', req.params.id).first().then(user => {
-    res.format({
-      default(){
-        res.status(406).send('Not Acceptable');
-      },
-      html(){
-        res.render('users/show',{user});
-      },
-      json(){
-        if(user) {
-          res.send(user);
-        } else {
-          res.status(404).send();
-        }
-      }
-    });
-  })
+    delete user.password;
+    delete user.facebook_id;
+    knex.select('m.*', 'w.name', 'w.image', 'w.pairing', 'w.about').from('users_favs as uf').where('user_id', req.params.id)
+      .join('matches as m', 'm.id', 'uf.match_id').join('wines as w', 'w.id', 'm.wine_id').then(matches => {
+        eval(require('locus'));
+        res.format({
+          default(){
+            res.status(406).send('Not Acceptable');
+          },
+          html(){
+            res.render('users/show',{user, matches});
+          },
+          json(){
+            if(user) {
+              res.send(user);
+            } else {
+              res.status(404).send();
+            }
+          }
+        });
+      });
+  });
 });
+
+router.use(auth.ensureCorrectUser);
 
 // edit
 router.get('/:id/edit', (req, res) => {
@@ -110,6 +119,13 @@ router.delete('/:id', (req, res) => {
         });
       }
     });
+  });
+});
+
+// delete favorite
+router.delete('/:id/matches/:match_id', (req, res) => {
+  knex('users_favs').where('match_id', req.params.match_id).del().then(() => {
+    res.redirect(`/users/${req.user.id}`);
   });
 });
 
