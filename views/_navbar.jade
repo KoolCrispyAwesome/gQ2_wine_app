@@ -1,0 +1,15 @@
+.nav-wrapper
+  ul.nav
+    li
+      a(href="/home")
+        img.logo-red(src="/images/logo-red.png")
+    li 
+      if(currentUser)
+        a.link(href="/users/#{currentUser.id}") #{currentUser.first_name}
+        a.link(href="/users/#{currentUser.id}") Favorites
+        a.link(href="/matches/new") New Match
+        a.link(href="/matches") Explore
+        a.link(href="/auth/logout") Logout
+      else
+        a#modal_trigger.link(href="#modal") Log in | Sign up
+        a.link(href="/matches/new") New Match

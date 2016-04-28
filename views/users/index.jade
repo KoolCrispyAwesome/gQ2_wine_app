@@ -1,6 +1,12 @@
 extends ../layout.jade
 
+block css
+  link(rel="stylesheet", href="/stylesheets/navbar.css")
+
 block content
+  include ../_navbar.jade
+
+
   each user in users
     ul
       li #{user.first_name}
