@@ -1,4 +1,5 @@
-require('dotenv').load();
+'use strict'
+
 const express = require('express');
 const app = express();
 const morgan = require('morgan');
@@ -9,6 +10,9 @@ const flash = require('connect-flash');
 const cookieSession = require('cookie-session');
 const knex = require('./db/knex');
 const routes = require('./routes');
+if(process.env.NODE_ENV === 'development'){
+  require('dotenv').load();
+}
 
 app.set('view engine', 'jade');
 app.use(express.static(__dirname + '/public'));
@@ -25,6 +29,8 @@ app.use(flash());
 require('./helpers/passport')(passport);
 app.use(require('./helpers/authHelpers').currentUser);
 
+app.get('/', (req, res) => res.redirect('/home'));
+
 app.get('/home', (req, res) => {  
   res.render('home');
 });
@@ -35,7 +41,8 @@ app.use('/matches', routes.matches);
 
 app.get('*', (req, res) => res.render('errors/404'));
 
-app.listen(3000, () => console.log('Server listening on port 3000'));
+let port = process.env.PORT || 3000;
+app.listen(port, () => console.log(`Server listening on port ${port}`));
 
 module.exports = {
   app
