@@ -17,12 +17,14 @@ block content
     p.section-headline The Perfect Combi
     div.match
       .box 
-        h2 Your selections:
+        h2 Your Selections:
         h3=match.veggie
         h3=match.cheese
         h3=match.meat
         h3=match.dessert
-    div.match.match-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quas veritatis voluptas dolorem consectetur! Est aliquam nostrum magnam modi voluptate officiis quod iure repellendus vero asperiores natus dolor laborum, explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ea necessitatibus deserunt porro tenetur quidem commodi optio cupiditate perferendis esse id possimus in saepe totam adipisci, nesciunt quasi officia? Nisi!
+    div.match.match-text
+      | #{match.pairing}
+      //- | #{match.about}
     div.match
       img.wine-img(src= match.image)
       p.wine-name= match.name
