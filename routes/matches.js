@@ -26,7 +26,7 @@ router.get('/:id', (req, res) => {
 router.post('/', (req, res) => {
   if (!Object.keys(req.body).length){
     req.flash('error', 'You must select at least one item.');
-    res.redirect('/matches');
+    res.redirect('/matches/new');
   }
   var choices = req.body.matches;
   var wine = matching.wineMatch(choices.veggie, choices.cheese, choices.meat, choices.dessert);
