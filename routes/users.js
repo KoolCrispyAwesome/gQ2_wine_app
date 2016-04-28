@@ -29,7 +29,6 @@ router.get('/:id', (req, res) => {
     delete user.facebook_id;
     knex.select('m.*', 'w.name', 'w.image', 'w.pairing', 'w.about').from('users_favs as uf').where('user_id', req.params.id)
       .join('matches as m', 'm.id', 'uf.match_id').join('wines as w', 'w.id', 'm.wine_id').then(matches => {
-        eval(require('locus'));
         res.format({
           default(){
             res.status(406).send('Not Acceptable');
