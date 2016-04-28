@@ -12,7 +12,7 @@ module.exports = {
   preventLoginSignup(req, res, next){
     if(req.isAuthenticated()){
       req.flash('error', 'Already logged in');
-      return res.redirect('/users');
+      return res.redirect(`/users/${req.user.id}`);
     } else {
       return next();
     }

@@ -14,12 +14,10 @@ block content
   .wrapper
     if(error)
       p: small #{error}
-    if(success)
-      p: small #{success}
 
     .signup
       p.action Sign up
-      form(action="/users" method="POST")
+      form(action="/auth/signup" method="POST")
         label(for="user-photo") Profile Picture
         input(type="hidden" name="user[photo]" role="uploadcare-uploader")
 
