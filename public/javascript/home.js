@@ -6,6 +6,7 @@ $(function(){
     $("#login_form").click(function () {
         $(".social_login").hide();
         $(".user_login").show();
+        $(".user_login").val('')
         return false;
     });
 
@@ -13,6 +14,7 @@ $(function(){
     $("#register_form").click(function () {
         $(".social_login").hide();
         $(".user_register").show();
+        $(".user_register").val('')
         $(".header_title").text('Register');
         return false;
     });
