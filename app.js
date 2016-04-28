@@ -32,7 +32,7 @@ app.use(require('./helpers/authHelpers').currentUser);
 app.get('/', (req, res) => res.redirect('/home'));
 
 app.get('/home', (req, res) => {  
-  res.render('home');
+  res.render('home', {error: req.flash('error')});
 });
 
 app.use('/auth', routes.auth);

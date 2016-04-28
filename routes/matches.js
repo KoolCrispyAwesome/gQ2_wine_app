@@ -4,7 +4,9 @@ const matching = require('../helpers/matching');
 const knex = require('../db/knex');
 
 router.get('/', (req, res) => {
-  res.render('matches/index');
+  knex('matches').then(matches => {
+    res.render('matches/index', {matches});
+  });
 });
 
 router.get('/new', (req, res) => {
