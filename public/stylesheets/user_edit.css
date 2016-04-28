@@ -6,6 +6,7 @@
   background-color: rgb(231, 231, 231);
   width: 50%;
   margin: 0 auto;
+  margin-top: 10px;
 }
 
 p {
@@ -31,6 +32,7 @@ button {
   color: white;
   border: none;
   background: rgb(109, 2, 2);
+  cursor: pointer;
 }
 
 label {
@@ -39,7 +41,7 @@ label {
 }
 
 input {
-  font-size: 14px;
+  font-size: 13px;
   width: 96%;
   padding: 8px;
   border: 1px solid #DDD;
@@ -55,4 +57,7 @@ input {
 .form .uploadcare-widget-button {
   border-radius: 0;
   background: rgb(109, 2, 2);
+  font-size: 14px;
+  padding: 8px;
+  cursor: pointer;
 }
