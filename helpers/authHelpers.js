@@ -32,7 +32,7 @@ module.exports = {
       return next();
     } else {
       req.flash('error', 'You do not have correct permissions');
-      return res.redirect('/users');
+      return res.redirect(`/users/${req.user.id}`);
     }
   }, 
 
