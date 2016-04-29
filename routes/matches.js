@@ -5,9 +5,13 @@ const matching = require('../helpers/matching');
 const auth = require('../helpers/authHelpers');
 
 router.get('/', auth.ensureAuthenticated, (req, res) => {
-  knex('matches').then(matches => {
-    res.render('matches/index', {matches});
-  });
+  knex.select('m.*', 'w.name', 'm.*', 'w.name', 'w.image', 'w.pairing', 'w.about', 'uf.user_id', 'u.first_name', 'u.photo').from('matches as m')
+    .join('users_favs as uf', 'uf.match_id', 'm.id')
+    .join('users as u', 'uf.user_if', 'u.id')
+    .join('wines as w', 'm.wine_id', 'w.id')
+    .then(matches => {
+      res.render('matches/index', {matches});
+    });
 });
 
 router.get('/new', (req, res) => {
