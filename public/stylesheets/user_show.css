@@ -1,13 +1,13 @@
 /*MATCH SECTION*/
 .match-wrapper:nth-child(odd) {
-  height: 500px;
+  height: 400px;
   background-color: #e7e7e7;
   font-family: Arial;
   padding-top: 20px;
   text-align: center;
 }
 .match-wrapper:nth-child(even) {
-  height: 500px;
+  height: 400px;
   background-color: white;
   font-family: Arial;
   padding-top: 20px;
@@ -27,4 +27,9 @@
 .match-img {
   width: 300px;
   height: 300px;
+}
+
+.wine-img {
+  height: 300px;
+  width: auto;
 }

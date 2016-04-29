@@ -1,9 +1,23 @@
 extends ../layout.jade
 
+block head
+  title Explore
+
 block css
+  link(rel="stylesheet", href="/stylesheets/user_show.css")
   link(rel="stylesheet", href="/stylesheets/navbar.css")
 
 block content
   include ../_navbar.jade
-
-  h1 EXPLORE MATCHES
+  each match in matches
+    div.match-wrapper
+      div.match
+        .box 
+          h2 Your Selections:
+          h3=match.veggie
+          h3=match.cheese
+          h3=match.meat
+          h3=match.dessert
+      div.match
+        img.wine-img(src= match.image)
+        p.wine-name= match.name

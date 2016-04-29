@@ -9,29 +9,17 @@ block css
 
 block content
   include ../_navbar.jade
-
-  div.match-wrapper
-    p.section-headline The Perfect Combi
-    div.match
-      .box 
-        h2 Your Selections:
-        h3=match.veggie
-        h3=match.cheese
-        h3=match.meat
-        h3=match.dessert
-    div.match.match-text
-      | #{match.pairing}
-      //- | #{match.about}
-    div.match
-      img.wine-img(src= match.image)
-      p.wine-name= match.name
-
-  div.match-wrapper
-    p.section-headline The Perfect Combi
-    div.match
-      img.match-img(src="/images/food-match-icon.png")
-      p Food
-    div.match.match-text Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsam quas veritatis voluptas dolorem consectetur! Est aliquam nostrum magnam modi voluptate officiis quod iure repellendus vero asperiores natus dolor laborum, explicabo. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ea necessitatibus deserunt porro tenetur quidem commodi optio cupiditate perferendis esse id possimus in saepe totam adipisci, nesciunt quasi officia? Nisi!
-    div.match
-      img.match-img(src="/images/wine-match-icon.png")
-      p Wine
+  each match in matches
+    div.match-wrapper
+      //- p.section-headline 
+      div.match
+        .box 
+          h2 Your Selections:
+          h3=match.veggie
+          h3=match.cheese
+          h3=match.meat
+          h3=match.dessert
+      //- div.match.match-text
+      div.match
+        img.wine-img(src= match.image)
+        p.wine-name= match.name
