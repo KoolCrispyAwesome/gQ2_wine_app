@@ -44,10 +44,8 @@ router.get('/:id', (req, res) => {
     });
 });
 
-router.use(auth.ensureCorrectUser);
-
 // edit
-router.get('/:id/edit', (req, res) => {
+router.get('/:id/edit', auth.ensureCorrectUser, (req, res) => {
   knex('users').where('id', req.params.id).first().then(user => {
     if(!user.password) {
       user.noPass = true;
@@ -68,7 +66,7 @@ router.get('/:id/edit', (req, res) => {
 
 // update
 router.put('/:id', (req, res) => {
-  knex('users').where('id', req.params.id).first().then(user => {
+  knex('users').where('id', auth.ensureCorrectUser, req.params.id).first().then(user => {
     var editUser = req.body.user;
     editUser.photo = editUser.photo || user.photo;
     editUser.email = editUser.email || user.email;
@@ -99,7 +97,7 @@ router.put('/:id', (req, res) => {
 });
 
 // delete
-router.delete('/:id', (req, res) => {
+router.delete('/:id', auth.ensureCorrectUser, (req, res) => {
   knex('users').where('id', req.params.id).returning('*').del().then(user => {
     res.format({
       default(){
@@ -118,7 +116,7 @@ router.delete('/:id', (req, res) => {
 });
 
 // delete favorite
-router.delete('/:id/matches/:match_id', (req, res) => {
+router.delete('/:id/matches/:match_id', auth.ensureCorrectUser, (req, res) => {
   knex('users_favs').where('match_id', req.params.match_id).del().then(() => {
     res.redirect(`/users/${req.user.id}`);
   });
