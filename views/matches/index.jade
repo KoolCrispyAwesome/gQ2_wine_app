@@ -11,6 +11,8 @@ block content
   include ../_navbar.jade
   each match in matches
     div.match-wrapper
+      // p=match.first_name
+      a(href="/users/#{match.user_id}"): img.profile-pic(src=match.photo)
       div.match
         .box 
           h2 Your Selections:
