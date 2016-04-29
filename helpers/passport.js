@@ -4,6 +4,7 @@ const knex = require('../db/knex');
 const bcrypt = require('bcrypt');
 const LocalStrategy = require('passport-local').Strategy;
 const FacebookStrategy = require('passport-facebook').Strategy;
+const FacebookCallbackURL = process.env.NODE_ENV === 'production' ? 'https://winio.herokuapp.com/auth/facebook/callback' : 'http://localhost:3000/auth/facebook/callback';
 
 module.exports = (passport) => {
 
@@ -36,7 +37,7 @@ module.exports = (passport) => {
   passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: 'http://localhost:3000/auth/facebook/callback',
+    callbackURL: FacebookCallbackURL,
     profileFields: ['id', 'name', 'emails']
   }, (accessToken, refreshToken, profile, done) => {
     knex('users').where('facebook_id', profile._json.id).first().then(user => {
