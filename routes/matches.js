@@ -9,6 +9,7 @@ router.get('/', auth.ensureAuthenticated, (req, res) => {
     .join('users_favs as uf', 'uf.match_id', 'm.id')
     .join('users as u', 'uf.user_id', 'u.id')
     .join('wines as w', 'm.wine_id', 'w.id')
+    .orderBy('m.id', 'desc')
     .then(matches => {
       res.render('matches/index', {matches});
     });

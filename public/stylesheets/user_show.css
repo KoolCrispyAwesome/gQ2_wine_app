@@ -1,17 +1,17 @@
 /*MATCH SECTION*/
-.match-wrapper:nth-child(odd) {
+.match-wrapper {
+  position: relative;
   height: 400px;
-  background-color: #e7e7e7;
   font-family: Arial;
   padding-top: 20px;
   text-align: center;
 }
+
+.match-wrapper:nth-child(odd) {
+  background-color: #e7e7e7;
+}
 .match-wrapper:nth-child(even) {
-  height: 400px;
   background-color: white;
-  font-family: Arial;
-  padding-top: 20px;
-  text-align: center;
 }
 .match {
   display: inline-block;
@@ -32,4 +32,13 @@
 .wine-img {
   height: 300px;
   width: auto;
+}
+
+.profile-pic {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
 }
